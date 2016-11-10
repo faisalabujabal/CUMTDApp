@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3A077E5E1DD4404300BDF81C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A077E5D1DD4404300BDF81C /* AppDelegate.swift */; };
-		3A077E601DD4404300BDF81C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A077E5F1DD4404300BDF81C /* ViewController.swift */; };
+		3A077E601DD4404300BDF81C /* NearbyStopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A077E5F1DD4404300BDF81C /* NearbyStopsViewController.swift */; };
 		3A077E631DD4404300BDF81C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A077E611DD4404300BDF81C /* Main.storyboard */; };
 		3A077E651DD4404300BDF81C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A077E641DD4404300BDF81C /* Assets.xcassets */; };
 		3A077E681DD4404300BDF81C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A077E661DD4404300BDF81C /* LaunchScreen.storyboard */; };
 		3A077E731DD4404300BDF81C /* CUMTDAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A077E721DD4404300BDF81C /* CUMTDAppTests.swift */; };
+		3A077E801DD4410200BDF81C /* StopsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A077E7F1DD4410200BDF81C /* StopsTableView.swift */; };
+		3A077E831DD4428500BDF81C /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A077E821DD4428500BDF81C /* Api.swift */; };
+		3A0B7BB01DD4584500FB1841 /* StopsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0B7BAF1DD4584500FB1841 /* StopsListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +31,7 @@
 /* Begin PBXFileReference section */
 		3A077E5A1DD4404300BDF81C /* CUMTDApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CUMTDApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A077E5D1DD4404300BDF81C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3A077E5F1DD4404300BDF81C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3A077E5F1DD4404300BDF81C /* NearbyStopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyStopsViewController.swift; sourceTree = "<group>"; };
 		3A077E621DD4404300BDF81C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A077E641DD4404300BDF81C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A077E671DD4404300BDF81C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +39,9 @@
 		3A077E6E1DD4404300BDF81C /* CUMTDAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CUMTDAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A077E721DD4404300BDF81C /* CUMTDAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUMTDAppTests.swift; sourceTree = "<group>"; };
 		3A077E741DD4404300BDF81C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A077E7F1DD4410200BDF81C /* StopsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopsTableView.swift; sourceTree = "<group>"; };
+		3A077E821DD4428500BDF81C /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		3A0B7BAF1DD4584500FB1841 /* StopsListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopsListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +83,10 @@
 		3A077E5C1DD4404300BDF81C /* CUMTDApp */ = {
 			isa = PBXGroup;
 			children = (
+				3A077E811DD4426100BDF81C /* Internals */,
+				3A077E7E1DD440CE00BDF81C /* Views */,
+				3A077E7D1DD4409B00BDF81C /* ViewControllers */,
 				3A077E5D1DD4404300BDF81C /* AppDelegate.swift */,
-				3A077E5F1DD4404300BDF81C /* ViewController.swift */,
 				3A077E611DD4404300BDF81C /* Main.storyboard */,
 				3A077E641DD4404300BDF81C /* Assets.xcassets */,
 				3A077E661DD4404300BDF81C /* LaunchScreen.storyboard */,
@@ -94,6 +102,31 @@
 				3A077E741DD4404300BDF81C /* Info.plist */,
 			);
 			path = CUMTDAppTests;
+			sourceTree = "<group>";
+		};
+		3A077E7D1DD4409B00BDF81C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3A077E5F1DD4404300BDF81C /* NearbyStopsViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3A077E7E1DD440CE00BDF81C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A077E7F1DD4410200BDF81C /* StopsTableView.swift */,
+				3A0B7BAF1DD4584500FB1841 /* StopsListCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		3A077E811DD4426100BDF81C /* Internals */ = {
+			isa = PBXGroup;
+			children = (
+				3A077E821DD4428500BDF81C /* Api.swift */,
+			);
+			name = Internals;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,7 +234,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A077E601DD4404300BDF81C /* ViewController.swift in Sources */,
+				3A077E601DD4404300BDF81C /* NearbyStopsViewController.swift in Sources */,
+				3A077E801DD4410200BDF81C /* StopsTableView.swift in Sources */,
+				3A0B7BB01DD4584500FB1841 /* StopsListCell.swift in Sources */,
+				3A077E831DD4428500BDF81C /* Api.swift in Sources */,
 				3A077E5E1DD4404300BDF81C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +446,7 @@
 				3A077E791DD4404300BDF81C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3A077E7A1DD4404300BDF81C /* Build configuration list for PBXNativeTarget "CUMTDAppTests" */ = {
 			isa = XCConfigurationList;
@@ -418,6 +455,7 @@
 				3A077E7C1DD4404300BDF81C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
