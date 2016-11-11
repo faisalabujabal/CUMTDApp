@@ -10,12 +10,18 @@ import UIKit
 import CoreLocation
 
 /// Custom view controller for the stops view controller
-class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
+class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
     var locationManager: CLLocationManager?
     var currentLocation: CLLocation?
     var stops: [Stop] = []
+
+    var stopsSearchResult: [Stop] = []
+    var shouldShowSearchResult: Bool = false;
+    
+    var searchController: UISearchController!
     
     @IBOutlet weak var stopsTableView: UITableView!
+    
     
     /// function that gets called after the view gets loaded
     override func viewDidLoad() {
@@ -24,7 +30,51 @@ class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableV
         self.stopsTableView.delegate = self
         self.stopsTableView.dataSource = self
         initializeLocationManager()
+        configureSearchController()
+
     }
+    
+    func configureSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.dimsBackgroundDuringPresentation = false
+        
+        stopsTableView.tableHeaderView = searchController.searchBar
+
+    }
+    
+    func filterContentForSearchText(searchText: String) -> Void {
+        if self.stops.isEmpty {
+            return
+        }
+        self.stopsSearchResult = self.stops.filter({ (currStop: Stop) -> Bool in
+            return currStop.name.lowercased().contains(searchText.lowercased())
+        })
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+        stopsTableView.reloadData()
+    }
+    
+    
+    func searchDisplayController(controller: UISearchController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
+        self.filterContentForSearchText(searchText: searchString)
+        return true
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        shouldShowSearchResult = true
+        self.stopsTableView.reloadData()
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        shouldShowSearchResult = false
+        self.stopsTableView.reloadData()
+    }
+
     
     /// initializes the location manager
     func initializeLocationManager() {
@@ -57,6 +107,7 @@ class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableV
             DispatchQueue.main.async {
                 self.stops = Parser.parseStops(data: response)
                 self.stopsTableView.reloadData()
+
             }
         }
     }
@@ -68,8 +119,10 @@ class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableV
     ///   - indexPath: the index path
     /// - Returns: the cell that should be rendered
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let stopListCell = tableView.dequeueReusableCell(withIdentifier: "stopCell", for: indexPath) as! StopCell
-        let currentStop = self.stops[indexPath.row]
+        let stopsList = shouldShowSearchResult ? self.stopsSearchResult : self.stops
+        let currentStop = stopsList[indexPath.row]
         stopListCell.stopFullName.text = currentStop.name
         stopListCell.stopId = currentStop.id
         return stopListCell
@@ -82,6 +135,10 @@ class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableV
     ///   - section: the section
     /// - Returns: the number of rows
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if shouldShowSearchResult {
+            return self.stopsSearchResult.count
+        }
+        
         return self.stops.count
     }
     
@@ -102,8 +159,13 @@ class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableV
     ///   - tableView: the table view
     ///   - indexPath: the index path
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        searchController.isActive = false
+        
         performSegue(withIdentifier: "showRoutesFromStops", sender: self.stops[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
+
+        shouldShowSearchResult = false
+        stopsTableView.reloadData()
     }
 }
 
