@@ -13,8 +13,21 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var stop: Stop? = nil
     var routes: [Route] = []
     
-
     @IBOutlet weak var routesTableView: UITableView!
+    @IBOutlet weak var favoriteBtn: UIButton!
+    
+    @IBAction func favoriteRouteAction(_ sender: UIButton) {
+        if self.stop != nil {
+            if (stop?.isFavorite)! {
+                LocalData.removeFavoriteStop(stopId: self.stop!.id)
+                self.stop?.isFavorite = false
+            } else {
+                LocalData.addFavoriteStop(stop: self.stop!)
+                self.stop?.isFavorite = true
+            }
+            updateStarIcon()
+        }
+    }
     
     /// Gets called when the view loaded
     override func viewDidLoad() {
@@ -39,6 +52,7 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.title = self.stop?.name
         }
         self.routesTableView.separatorColor = UIColor.clear
+        updateStarIcon()
     }
     
     /// Get the number of rows
@@ -66,6 +80,10 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return routeCell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("segue")
+    }
+    
     /// When a row gets clicked
     ///
     /// - Parameters:
@@ -74,4 +92,13 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    private func updateStarIcon() {
+        if (stop?.isFavorite)! {
+            self.favoriteBtn.setBackgroundImage(UIImage(named: "starIconFilled"), for: UIControlState.normal)
+        } else {
+            self.favoriteBtn.setBackgroundImage(UIImage(named: "starIcon"), for: UIControlState.normal)
+        }
+    }
+    
 }

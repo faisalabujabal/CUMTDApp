@@ -7,15 +7,18 @@
 //
 
 import UIKit
-import CoreLocation
 
 /// Custom view controller for the stops view controller
-class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
-    var locationManager: CLLocationManager?
-    var currentLocation: CLLocation?
+
+class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
     var stops: [Stop] = []
+    var stopsSearchResult: [Stop] = []
+    var shouldShowSearchResult: Bool = false;
+    
+    var searchController: UISearchController!
     
     @IBOutlet weak var stopsTableView: UITableView!
+    
     
     /// function that gets called after the view gets loaded
     override func viewDidLoad() {
@@ -23,42 +26,56 @@ class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableV
         
         self.stopsTableView.delegate = self
         self.stopsTableView.dataSource = self
-        initializeLocationManager()
+        configureSearchController()
     }
     
-    /// initializes the location manager
-    func initializeLocationManager() {
-        self.locationManager = CLLocationManager()
-        self.locationManager?.delegate = self
-        self.locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        self.locationManager?.requestLocation()
-        self.locationManager?.requestWhenInUseAuthorization()
+    
+    /// setup the search controller
+    func configureSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.dimsBackgroundDuringPresentation = false
+        
+        stopsTableView.tableHeaderView = searchController.searchBar
+
     }
     
-    /// If getting the location fails
+    /// filter the stops to display the matching result
     ///
-    /// - Parameters:
-    ///   - manager: the location manager
-    ///   - error: the error that occured
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error with getting the location")
-    }
-    
-    /// If the location gets updated
-    ///
-    /// - Parameters:
-    ///   - manager: the location manager
-    ///   - locations: the new locations
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.currentLocation = locations[0]
-        let lat = (self.currentLocation?.coordinate.latitude)! as Double
-        let lon = (self.currentLocation?.coordinate.longitude)! as Double
-        Api.getStops(lat: lat, lon: lon) {(response) -> () in
-            DispatchQueue.main.async {
-                self.stops = Parser.parseStops(data: response)
-                self.stopsTableView.reloadData()
-            }
+    /// - Parameter searchText: the keyword user typed in to perform the search
+    func filterContentForSearchText(searchText: String) -> Void {
+        if self.stops.isEmpty {
+            return
         }
+        self.stopsSearchResult = self.stops.filter({ (currStop: Stop) -> Bool in
+            return currStop.name.lowercased().contains(searchText.lowercased())
+        })
+    }
+    
+    /// a delegate function that will be called when user types something in the search bar
+    ///
+    /// - Parameter searchController: the controller whose search bar is being manipulated
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+        stopsTableView.reloadData()
+    }
+    
+    /// delegate method being called when user start typing
+    ///
+    /// - Parameter searchBar: the bar user types into
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        shouldShowSearchResult = true
+        self.stopsTableView.reloadData()
+        
+    }
+    
+    /// delegate method being called when user hit cancel button
+    ///
+    /// - Parameter searchBar: the bar whose cancel button is clicked by user
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        shouldShowSearchResult = false
+        self.stopsTableView.reloadData()
     }
 
     /// The content of every cell
@@ -68,8 +85,10 @@ class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableV
     ///   - indexPath: the index path
     /// - Returns: the cell that should be rendered
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let stopListCell = tableView.dequeueReusableCell(withIdentifier: "stopCell", for: indexPath) as! StopCell
-        let currentStop = self.stops[indexPath.row]
+        let stopsList = shouldShowSearchResult ? self.stopsSearchResult : self.stops
+        let currentStop = stopsList[indexPath.row]
         stopListCell.stopFullName.text = currentStop.name
         stopListCell.stopId = currentStop.id
         return stopListCell
@@ -82,6 +101,10 @@ class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableV
     ///   - section: the section
     /// - Returns: the number of rows
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if shouldShowSearchResult {
+            return self.stopsSearchResult.count
+        }
+        
         return self.stops.count
     }
     
@@ -102,8 +125,18 @@ class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableV
     ///   - tableView: the table view
     ///   - indexPath: the index path
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        searchController.isActive = false
+        
         performSegue(withIdentifier: "showRoutesFromStops", sender: self.stops[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
+
+        searchBarCancelButtonClicked(searchController.searchBar)
+    }
+    
+    public func refreshTableView() {
+        if self.stopsTableView != nil {
+            self.stopsTableView.reloadData()
+        }
     }
 }
 
