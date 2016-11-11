@@ -20,9 +20,13 @@ class FavoriteStopsNavigationController: UINavigationController {
     private func loadFavoriteStops() {
         if self.tableViewController != nil {
             self.favoriteStops = []
-            for (stopId, stopName) in LocalData.getFavoriteStops()! {
+            let favorites = LocalData.getFavoriteStops()
+            if favorites == nil {
+                return
+            }
+            for (stopId, stopName) in favorites! {
                 let stopData = ["stop_id": stopId, "stop_name": stopName]
-                favoriteStops.append(Stop(data: stopData as NSDictionary))
+                self.favoriteStops.append(Stop(data: stopData as NSDictionary))
             }
             self.tableViewController?.stops = self.favoriteStops
             self.tableViewController?.refreshTableView()
