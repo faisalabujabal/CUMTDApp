@@ -34,12 +34,13 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func initializeStyles() {
+    /// helper function that initializes any styless
+    private func initializeStyles() {
         self.stopsTableView.separatorColor = UIColor.clear
     }
     
     /// setup the search controller
-    func configureSearchController() {
+    private func configureSearchController() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self

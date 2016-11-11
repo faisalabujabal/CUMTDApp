@@ -16,16 +16,25 @@ class NearbyStopsNavigationController: UINavigationController, CLLocationManager
     var performedSegue: Bool = false
     var stopsViewController: StopsViewController? = nil
 
+    /// this function gets executed before the view shows up
+    ///
+    /// - Parameter animated: the animation
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initializeLocationManager()
     }
     
+    /// this function gets called when the view loads
     override func viewDidLoad() {
         super.viewDidLoad()
         self.performSegue(withIdentifier: "fromNearbyStopsNavController", sender: nil)
     }
     
+    /// this function gets called before the segue
+    ///
+    /// - Parameters:
+    ///   - segue: the segue object
+    ///   - sender: the executor of the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.stopsViewController = segue.destination as? StopsViewController
         self.stopsViewController?.stops = self.stops
