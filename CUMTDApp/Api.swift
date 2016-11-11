@@ -8,9 +8,17 @@
 
 import UIKit
 
+/// Static class that deals with the API
 class Api {
     static let apiPath: String = "https://secure-cove-26997.herokuapp.com/api"
     
+    
+    /// Returns the stops based on the location
+    ///
+    /// - Parameters:
+    ///   - lat: the latitude location
+    ///   - lon: the longitude location
+    ///   - completionHandler: closure that gets called when the response gets back
     static func getStops(lat: Double, lon: Double, completionHandler: @escaping ([NSDictionary]) -> ()) {
         let params: (NSDictionary) = [
             "lat": lat,
@@ -19,6 +27,11 @@ class Api {
         requestFromApi(endpoint: "get_stops", params: params, completionHandler: completionHandler)
     }
     
+    /// Returns the routes based on the stopId
+    ///
+    /// - Parameters:
+    ///   - stopId: the stop id for the routes
+    ///   - completionHandler: closure that gets called when the response gets back
     static func getRoutes(stopId: String, completionHandler: @escaping ([NSDictionary]) -> ()) {
         let params: (NSDictionary) = [
             "stop_id": stopId
@@ -26,6 +39,12 @@ class Api {
         requestFromApi(endpoint: "get_departure", params: params, completionHandler: completionHandler)
     }
     
+    /// Helper function that executes get requests to the api
+    ///
+    /// - Parameters:
+    ///   - endpoint: the endpoint to get the data from
+    ///   - params: dictionary parameters
+    ///   - completionHandler: closure that gets called when the response gets back
     static private func requestFromApi(endpoint: String, params: NSDictionary,
                                        completionHandler: @escaping ([NSDictionary]) -> ()) {
         let queryParams = paramDictToString(params: params)
@@ -44,6 +63,10 @@ class Api {
         }.resume()
     }
     
+    /// Helper function that generate query params string from a dictionary
+    ///
+    /// - Parameter params: dictionary list of parameters
+    /// - Returns: a string representation of the params
     static private func paramDictToString(params: NSDictionary) -> String {
         var queryString = ""
         for (key, value) in params {

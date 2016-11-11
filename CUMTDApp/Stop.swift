@@ -8,10 +8,14 @@
 
 import UIKit
 
+/// Class representation of a Stop
 class Stop {
     var id: String
     var name: String
     
+    /// Initializes a Stop
+    ///
+    /// - Parameter data: dictionary data
     init(data: NSDictionary) {
         self.id = (data["stop_id"] as? String)!
         self.name = (data["stop_name"] as? String)!

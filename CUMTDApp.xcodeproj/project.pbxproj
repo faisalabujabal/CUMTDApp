@@ -8,18 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		3A077E5E1DD4404300BDF81C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A077E5D1DD4404300BDF81C /* AppDelegate.swift */; };
-		3A077E601DD4404300BDF81C /* NearbyStopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A077E5F1DD4404300BDF81C /* NearbyStopsViewController.swift */; };
+		3A077E601DD4404300BDF81C /* StopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A077E5F1DD4404300BDF81C /* StopsViewController.swift */; };
 		3A077E631DD4404300BDF81C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A077E611DD4404300BDF81C /* Main.storyboard */; };
 		3A077E651DD4404300BDF81C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A077E641DD4404300BDF81C /* Assets.xcassets */; };
 		3A077E681DD4404300BDF81C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A077E661DD4404300BDF81C /* LaunchScreen.storyboard */; };
 		3A077E731DD4404300BDF81C /* CUMTDAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A077E721DD4404300BDF81C /* CUMTDAppTests.swift */; };
 		3A077E831DD4428500BDF81C /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A077E821DD4428500BDF81C /* Api.swift */; };
 		3A0B7BB01DD4584500FB1841 /* StopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0B7BAF1DD4584500FB1841 /* StopCell.swift */; };
-		3A0B7BB21DD462D700FB1841 /* StopDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0B7BB11DD462D700FB1841 /* StopDetailsViewController.swift */; };
+		3A0B7BB21DD462D700FB1841 /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0B7BB11DD462D700FB1841 /* RoutesViewController.swift */; };
 		3A3ED5A91DD518A9007D0D54 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5A81DD518A9007D0D54 /* RouteCell.swift */; };
 		3A3ED5AB1DD5339B007D0D54 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5AA1DD5339B007D0D54 /* Stop.swift */; };
 		3A3ED5AD1DD534E6007D0D54 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5AC1DD534E6007D0D54 /* Parser.swift */; };
 		3A3ED5AF1DD5364A007D0D54 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5AE1DD5364A007D0D54 /* Route.swift */; };
+		3A3ED5B11DD54F0C007D0D54 /* RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5B01DD54F0C007D0D54 /* RGBA.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +36,7 @@
 /* Begin PBXFileReference section */
 		3A077E5A1DD4404300BDF81C /* CUMTDApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CUMTDApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A077E5D1DD4404300BDF81C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3A077E5F1DD4404300BDF81C /* NearbyStopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyStopsViewController.swift; sourceTree = "<group>"; };
+		3A077E5F1DD4404300BDF81C /* StopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopsViewController.swift; sourceTree = "<group>"; };
 		3A077E621DD4404300BDF81C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A077E641DD4404300BDF81C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A077E671DD4404300BDF81C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -45,11 +46,12 @@
 		3A077E741DD4404300BDF81C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A077E821DD4428500BDF81C /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		3A0B7BAF1DD4584500FB1841 /* StopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopCell.swift; sourceTree = "<group>"; };
-		3A0B7BB11DD462D700FB1841 /* StopDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopDetailsViewController.swift; sourceTree = "<group>"; };
+		3A0B7BB11DD462D700FB1841 /* RoutesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
 		3A3ED5A81DD518A9007D0D54 /* RouteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
 		3A3ED5AA1DD5339B007D0D54 /* Stop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
 		3A3ED5AC1DD534E6007D0D54 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		3A3ED5AE1DD5364A007D0D54 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		3A3ED5B01DD54F0C007D0D54 /* RGBA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBA.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +117,8 @@
 		3A077E7D1DD4409B00BDF81C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3A077E5F1DD4404300BDF81C /* NearbyStopsViewController.swift */,
-				3A0B7BB11DD462D700FB1841 /* StopDetailsViewController.swift */,
+				3A077E5F1DD4404300BDF81C /* StopsViewController.swift */,
+				3A0B7BB11DD462D700FB1841 /* RoutesViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -137,6 +139,7 @@
 				3A3ED5AA1DD5339B007D0D54 /* Stop.swift */,
 				3A3ED5AC1DD534E6007D0D54 /* Parser.swift */,
 				3A3ED5AE1DD5364A007D0D54 /* Route.swift */,
+				3A3ED5B01DD54F0C007D0D54 /* RGBA.swift */,
 			);
 			name = Internals;
 			sourceTree = "<group>";
@@ -247,10 +250,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A3ED5AF1DD5364A007D0D54 /* Route.swift in Sources */,
+				3A3ED5B11DD54F0C007D0D54 /* RGBA.swift in Sources */,
 				3A3ED5AB1DD5339B007D0D54 /* Stop.swift in Sources */,
-				3A077E601DD4404300BDF81C /* NearbyStopsViewController.swift in Sources */,
+				3A077E601DD4404300BDF81C /* StopsViewController.swift in Sources */,
 				3A3ED5A91DD518A9007D0D54 /* RouteCell.swift in Sources */,
-				3A0B7BB21DD462D700FB1841 /* StopDetailsViewController.swift in Sources */,
+				3A0B7BB21DD462D700FB1841 /* RoutesViewController.swift in Sources */,
 				3A3ED5AD1DD534E6007D0D54 /* Parser.swift in Sources */,
 				3A0B7BB01DD4584500FB1841 /* StopCell.swift in Sources */,
 				3A077E831DD4428500BDF81C /* Api.swift in Sources */,

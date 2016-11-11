@@ -8,8 +8,13 @@
 
 import UIKit
 
+/// Static class that parses the data from the API
 class Parser {
     
+    /// Parses the stop dictionaries to array of Stops
+    ///
+    /// - Parameter data: response returned from the API
+    /// - Returns: array of stops
     static func parseStops(data: [NSDictionary]) -> [Stop] {
         var stops: [Stop] = []
         for stopData in data {
@@ -18,6 +23,10 @@ class Parser {
         return stops
     }
     
+    /// Parses the Routes dictionaries to array of Routes
+    ///
+    /// - Parameter data: response returned from the API
+    /// - Returns: array of Routes
     static func parseRoutes(data: [NSDictionary]) -> [Route] {
         var routes: [Route] = []
         for routeData in data {
