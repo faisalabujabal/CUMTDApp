@@ -1,5 +1,5 @@
 //
-//  StopsListCell.swift
+//  RouteCell.swift
 //  CUMTDApp
 //
 //  Created by Faisal Abu Jabal on 11/10/16.
@@ -8,7 +8,9 @@
 
 import UIKit
 
-class StopsListCell: UITableViewCell {
+class RouteCell: UITableViewCell {
     
-    @IBOutlet weak var stopFullName: UILabel!
+    @IBOutlet weak var routeName: UILabel!
+    @IBOutlet weak var remainingTime: UILabel!
+    
 }

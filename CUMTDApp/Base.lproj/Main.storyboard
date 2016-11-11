@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,12 +20,29 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="o76-b1-yql"/>
+                        <segue destination="h2N-HV-zIq" kind="relationship" relationship="viewControllers" id="n8f-93-kUL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ARp-H8-XaE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-969" y="139"/>
+            <point key="canvasLocation" x="-100" y="-165"/>
+        </scene>
+        <!--Nearby-->
+        <scene sceneID="rIP-Er-umk">
+            <objects>
+                <navigationController id="h2N-HV-zIq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Nearby" image="locationIcon" selectedImage="locationIcon" id="Ue0-L1-PFl"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0cB-cl-wWS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="bop-4O-tBy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cI6-XU-j5X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1265" y="674"/>
         </scene>
         <!--Nearby Stops-->
         <scene sceneID="tne-QT-ifu">
@@ -38,16 +56,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rZo-CT-XsA" customClass="StopsTableView" customModule="CUMTDApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rZo-CT-XsA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stopsListCell" id="ZuE-yn-rBA" customClass="StopsListCell" customModule="CUMTDApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="stopCell" id="ZuE-yn-rBA" customClass="StopCell" customModule="CUMTDApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZuE-yn-rBA" id="gzJ-QL-fl8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goodwin &amp; Main" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0R-Rw-3Jz">
@@ -61,21 +78,103 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="stopFullName" destination="Q0R-Rw-3Jz" id="ZzO-ub-R4w"/>
+                                            <segue destination="Wc9-Yl-XQ4" kind="show" identifier="showRoutesFromStops" trigger="accessoryAction" id="Thh-no-eZq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="rZo-CT-XsA" secondAttribute="trailing" id="Oao-KC-i1y"/>
+                            <constraint firstItem="rZo-CT-XsA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TX0-yG-gS7"/>
+                            <constraint firstItem="rZo-CT-XsA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Unm-Ee-p8t"/>
+                            <constraint firstAttribute="bottom" secondItem="rZo-CT-XsA" secondAttribute="bottom" id="dOC-pA-9qK"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Nearby" id="jvw-LL-AYL"/>
+                    <tabBarItem key="tabBarItem" title="Nearby" image="locationIcon" selectedImage="locationIcon" id="jvw-LL-AYL"/>
+                    <navigationItem key="navigationItem" title="Nearby Stops" id="yUU-L4-8pB"/>
                     <connections>
                         <outlet property="nearbyStopsTableView" destination="rZo-CT-XsA" id="gJb-VZ-O4k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+            <point key="canvasLocation" x="-1266" y="1557"/>
+        </scene>
+        <!--Goodwin & Main-->
+        <scene sceneID="eLg-uP-53I">
+            <objects>
+                <viewController id="Wc9-Yl-XQ4" customClass="StopDetailsViewController" customModule="CUMTDApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hLv-qq-KZX"/>
+                        <viewControllerLayoutGuide type="bottom" id="iV0-sp-miC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w3K-No-K9O">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E5E-uL-lFI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="routeCell" id="zar-rs-aK0" customClass="RouteCell" customModule="CUMTDApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zar-rs-aK0" id="MAj-hh-q30">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="5W Greenhopper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfs-x2-23c">
+                                                    <rect key="frame" x="8" y="11" width="251" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="17 min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2H-QQ-IxS">
+                                                    <rect key="frame" x="281" y="11" width="86" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="K2H-QQ-IxS" firstAttribute="top" secondItem="MAj-hh-q30" secondAttribute="topMargin" constant="3" id="5hN-TR-HCx"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="K2H-QQ-IxS" secondAttribute="bottom" constant="3" id="6yx-Ux-oVJ"/>
+                                                <constraint firstItem="pfs-x2-23c" firstAttribute="top" secondItem="MAj-hh-q30" secondAttribute="topMargin" constant="3" id="OgX-7F-B1Z"/>
+                                                <constraint firstItem="K2H-QQ-IxS" firstAttribute="trailing" secondItem="MAj-hh-q30" secondAttribute="trailingMargin" id="X32-pi-hpu"/>
+                                                <constraint firstItem="pfs-x2-23c" firstAttribute="leading" secondItem="MAj-hh-q30" secondAttribute="leadingMargin" id="mIq-Cc-gj4"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="pfs-x2-23c" secondAttribute="bottom" constant="3" id="mfB-Jl-XPI"/>
+                                                <constraint firstItem="K2H-QQ-IxS" firstAttribute="leading" secondItem="pfs-x2-23c" secondAttribute="trailing" constant="22" id="wy8-v7-Xxu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="remainingTime" destination="K2H-QQ-IxS" id="lEL-sM-p1g"/>
+                                            <outlet property="routeName" destination="pfs-x2-23c" id="WlZ-yT-LCN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="E5E-uL-lFI" firstAttribute="top" secondItem="w3K-No-K9O" secondAttribute="top" id="RmN-lo-knJ"/>
+                            <constraint firstAttribute="bottom" secondItem="E5E-uL-lFI" secondAttribute="bottom" id="bwq-Qp-v6w"/>
+                            <constraint firstItem="E5E-uL-lFI" firstAttribute="leading" secondItem="w3K-No-K9O" secondAttribute="leading" id="mDD-XM-H1M"/>
+                            <constraint firstAttribute="trailing" secondItem="E5E-uL-lFI" secondAttribute="trailing" id="udR-A0-d9J"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Goodwin &amp; Main" id="JPu-GO-a5i"/>
+                    <connections>
+                        <outlet property="routesTableView" destination="E5E-uL-lFI" id="pO6-YS-IGh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Id-OW-o8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-260" y="1556.6716641679161"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="locationIcon" width="25" height="25"/>
+    </resources>
 </document>

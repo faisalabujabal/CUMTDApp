@@ -12,13 +12,13 @@ import CoreLocation
 class NearbyStopsViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
     var locationManager: CLLocationManager?
     var currentLocation: CLLocation?
-    var stops: [NSDictionary] = []
+    var stops: [Stop] = []
 
-    @IBOutlet weak var nearbyStopsTableView: StopsTableView!
+    @IBOutlet weak var nearbyStopsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         self.nearbyStopsTableView.delegate = self
         self.nearbyStopsTableView.dataSource = self
         initializeLocationManager()
@@ -41,19 +41,34 @@ class NearbyStopsViewController: UIViewController, CLLocationManagerDelegate, UI
         let lat = (self.currentLocation?.coordinate.latitude)! as Double
         let lon = (self.currentLocation?.coordinate.longitude)! as Double
         Api.getStops(lat: lat, lon: lon) {(response) -> () in
-            self.stops = response
-            self.nearbyStopsTableView.reloadData()
+            DispatchQueue.main.async {
+                self.stops = Parser.parseStops(data: response)
+                self.nearbyStopsTableView.reloadData()
+            }
         }
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let stopListCell = tableView.dequeueReusableCell(withIdentifier: "stopsListCell", for: indexPath) as! StopsListCell
-        stopListCell.stopFullName.text = self.stops[indexPath.row]["stop_name"] as? String
+        let stopListCell = tableView.dequeueReusableCell(withIdentifier: "stopCell", for: indexPath) as! StopCell
+        let currentStop = self.stops[indexPath.row]
+        stopListCell.stopFullName.text = currentStop.name
+        stopListCell.stopId = currentStop.id
         return stopListCell
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.stops.count
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let stop = sender as! Stop
+        let detailViewController = segue.destination as! StopDetailsViewController
+        detailViewController.stop = stop
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showRoutesFromStops", sender: self.stops[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
