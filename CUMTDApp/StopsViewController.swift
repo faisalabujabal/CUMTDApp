@@ -34,6 +34,8 @@ class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableV
 
     }
     
+    
+    /// setup the search controller
     func configureSearchController() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -44,6 +46,9 @@ class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableV
 
     }
     
+    /// filter the stops to display the matching result
+    ///
+    /// - Parameter searchText: the keyword user typed in to perform the search
     func filterContentForSearchText(searchText: String) -> Void {
         if self.stops.isEmpty {
             return
@@ -53,23 +58,28 @@ class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableV
         })
     }
     
+    /// a delegate function that will be called when user types something in the search bar
+    ///
+    /// - Parameter searchController: the controller whose search bar is being manipulated
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchText: searchController.searchBar.text!)
         stopsTableView.reloadData()
     }
     
     
-    func searchDisplayController(controller: UISearchController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
-        self.filterContentForSearchText(searchText: searchString)
-        return true
-    }
     
+    /// delegate method being called when user start typing
+    ///
+    /// - Parameter searchBar: the bar user types into
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         shouldShowSearchResult = true
         self.stopsTableView.reloadData()
         
     }
     
+    /// delegate method being called when user hit cancel button
+    ///
+    /// - Parameter searchBar: the bar whose cancel button is clicked by user
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         shouldShowSearchResult = false
         self.stopsTableView.reloadData()
@@ -164,8 +174,7 @@ class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableV
         performSegue(withIdentifier: "showRoutesFromStops", sender: self.stops[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
 
-        shouldShowSearchResult = false
-        stopsTableView.reloadData()
+        searchBarCancelButtonClicked(searchController.searchBar)
     }
 }
 
