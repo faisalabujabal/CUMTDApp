@@ -18,10 +18,10 @@ class NearbyStopsNavigationController: UINavigationController, CLLocationManager
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initializeLocationManager()
+        self.navigationBar.backgroundColor = RGBA(hex: "#122847")?.getUIColor()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(segue.destination)
         let destination = segue.destination as! StopsViewController
         destination.stops = self.stops
         destination.title = "Nearby"
