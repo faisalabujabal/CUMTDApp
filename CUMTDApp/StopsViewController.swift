@@ -9,18 +9,18 @@
 import UIKit
 import CoreLocation
 
-class NearbyStopsViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
+class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
     var locationManager: CLLocationManager?
     var currentLocation: CLLocation?
     var stops: [Stop] = []
-
-    @IBOutlet weak var nearbyStopsTableView: UITableView!
+    
+    @IBOutlet weak var stopsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.nearbyStopsTableView.delegate = self
-        self.nearbyStopsTableView.dataSource = self
+        self.stopsTableView.delegate = self
+        self.stopsTableView.dataSource = self
         initializeLocationManager()
     }
     
@@ -43,7 +43,7 @@ class NearbyStopsViewController: UIViewController, CLLocationManagerDelegate, UI
         Api.getStops(lat: lat, lon: lon) {(response) -> () in
             DispatchQueue.main.async {
                 self.stops = Parser.parseStops(data: response)
-                self.nearbyStopsTableView.reloadData()
+                self.stopsTableView.reloadData()
             }
         }
     }
@@ -62,7 +62,7 @@ class NearbyStopsViewController: UIViewController, CLLocationManagerDelegate, UI
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let stop = sender as! Stop
-        let detailViewController = segue.destination as! StopDetailsViewController
+        let detailViewController = segue.destination as! RoutesViewController
         detailViewController.stop = stop
     }
     

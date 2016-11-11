@@ -47,7 +47,7 @@
         <!--Nearby Stops-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Nearby Stops" id="BYZ-38-t0r" customClass="NearbyStopsViewController" customModule="CUMTDApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Nearby Stops" id="BYZ-38-t0r" customClass="StopsViewController" customModule="CUMTDApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -95,7 +95,7 @@
                     <tabBarItem key="tabBarItem" title="Nearby" image="locationIcon" selectedImage="locationIcon" id="jvw-LL-AYL"/>
                     <navigationItem key="navigationItem" title="Nearby Stops" id="yUU-L4-8pB"/>
                     <connections>
-                        <outlet property="nearbyStopsTableView" destination="rZo-CT-XsA" id="gJb-VZ-O4k"/>
+                        <outlet property="stopsTableView" destination="rZo-CT-XsA" id="rYc-Fw-Kw1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -105,7 +105,7 @@
         <!--Goodwin & Main-->
         <scene sceneID="eLg-uP-53I">
             <objects>
-                <viewController id="Wc9-Yl-XQ4" customClass="StopDetailsViewController" customModule="CUMTDApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Wc9-Yl-XQ4" customClass="RoutesViewController" customModule="CUMTDApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hLv-qq-KZX"/>
                         <viewControllerLayoutGuide type="bottom" id="iV0-sp-miC"/>
@@ -166,7 +166,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Goodwin &amp; Main" id="JPu-GO-a5i"/>
                     <connections>
-                        <outlet property="routesTableView" destination="E5E-uL-lFI" id="pO6-YS-IGh"/>
+                        <outlet property="routesTableView" destination="E5E-uL-lFI" id="at0-XY-UhM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Id-OW-o8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
