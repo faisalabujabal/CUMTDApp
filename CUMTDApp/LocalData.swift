@@ -39,7 +39,7 @@ class LocalData {
         }
     }
     
-    static private func getFavoriteStops() -> NSMutableDictionary? {
+    static func getFavoriteStops() -> NSMutableDictionary? {
         let favorites = self.userDefaults.object(forKey: self.favoriteStopKey) as? NSMutableDictionary
         if favorites == nil {
             return nil

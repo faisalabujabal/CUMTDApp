@@ -7,12 +7,9 @@
 //
 
 import UIKit
-import CoreLocation
 
 /// Custom view controller for the stops view controller
-class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
-    var locationManager: CLLocationManager?
-    var currentLocation: CLLocation?
+class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var stops: [Stop] = []
     
     @IBOutlet weak var stopsTableView: UITableView!
@@ -23,42 +20,6 @@ class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableV
         
         self.stopsTableView.delegate = self
         self.stopsTableView.dataSource = self
-        initializeLocationManager()
-    }
-    
-    /// initializes the location manager
-    func initializeLocationManager() {
-        self.locationManager = CLLocationManager()
-        self.locationManager?.delegate = self
-        self.locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        self.locationManager?.requestLocation()
-        self.locationManager?.requestWhenInUseAuthorization()
-    }
-    
-    /// If getting the location fails
-    ///
-    /// - Parameters:
-    ///   - manager: the location manager
-    ///   - error: the error that occured
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error with getting the location")
-    }
-    
-    /// If the location gets updated
-    ///
-    /// - Parameters:
-    ///   - manager: the location manager
-    ///   - locations: the new locations
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.currentLocation = locations[0]
-        let lat = (self.currentLocation?.coordinate.latitude)! as Double
-        let lon = (self.currentLocation?.coordinate.longitude)! as Double
-        Api.getStops(lat: lat, lon: lon) {(response) -> () in
-            DispatchQueue.main.async {
-                self.stops = Parser.parseStops(data: response)
-                self.stopsTableView.reloadData()
-            }
-        }
     }
 
     /// The content of every cell
@@ -104,6 +65,12 @@ class StopsViewController: UIViewController, CLLocationManagerDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showRoutesFromStops", sender: self.stops[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    public func refreshTableView() {
+        if self.stopsTableView != nil {
+            self.stopsTableView.reloadData()
+        }
     }
 }
 
