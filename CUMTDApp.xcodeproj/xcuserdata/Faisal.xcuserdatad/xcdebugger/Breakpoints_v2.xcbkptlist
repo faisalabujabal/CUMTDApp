@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CUMTDApp/Route.swift"
-            timestampString = "500513760.615022"
+            timestampString = "500523266.67638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "init(data:)"
             landmarkType = "7">
          </BreakpointContent>

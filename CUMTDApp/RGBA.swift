@@ -8,12 +8,20 @@
 
 import UIKit
 
+/// Represents an RGBA color
 class RGBA {
     var red: CGFloat
     var blue: CGFloat
     var green: CGFloat
     var alpha: CGFloat
     
+    /// initializes an RGBA Color from blue, green, red, and alpha
+    ///
+    /// - Parameters:
+    ///   - red: the red color
+    ///   - blue: the blue color
+    ///   - green: the green color
+    ///   - alpha: the alpha
     init(red: CGFloat, blue: CGFloat, green: CGFloat, alpha: CGFloat) {
         self.red = red
         self.blue = blue
@@ -21,8 +29,13 @@ class RGBA {
         self.alpha = alpha
     }
     
+    /// initializes an RGBA Color from the hex representation
+    ///
+    /// source http://stackoverflow.com/questions/24263007/how-to-use-hex-colour-values-in-swift-ios
+    ///
+    /// - Parameters:
+    ///   - hex: the hex representation
     convenience init?(hex: String) {
-        // source http://stackoverflow.com/questions/24263007/how-to-use-hex-colour-values-in-swift-ios
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if (cString.hasPrefix("#")) {
@@ -44,6 +57,9 @@ class RGBA {
         )
     }
     
+    /// Returns the UIColor of the RGBA Color
+    ///
+    /// - Returns: the UIColor representation
     func getUIColor() -> UIColor {
         return UIColor(red: self.red, green: self.green, blue: self.blue, alpha: self.alpha)
     }

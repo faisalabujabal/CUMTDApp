@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Custom table view cell that represents stop cell
 class StopCell: UITableViewCell {
     
     @IBOutlet weak var stopFullName: UILabel!

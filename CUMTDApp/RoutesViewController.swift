@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Custom view controller for the routes view controller
 class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var stop: Stop? = nil
     var routes: [Route] = []
@@ -15,6 +16,7 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     @IBOutlet weak var routesTableView: UITableView!
     
+    /// Gets called when the view loaded
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +33,7 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    /// initializes the stles for the view controller
     private func intitializeStyles() {
         if self.stop != nil {
             self.title = self.stop?.name
@@ -38,10 +41,22 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.routesTableView.separatorColor = UIColor.clear
     }
     
+    /// Get the number of rows
+    ///
+    /// - Parameters:
+    ///   - tableView: the table view
+    ///   - section: the section
+    /// - Returns: the number of rows
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.routes.count
     }
     
+    /// The row content
+    ///
+    /// - Parameters:
+    ///   - tableView: the table view
+    ///   - indexPath: the index path
+    /// - Returns: the route cell
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let routeCell = tableView.dequeueReusableCell(withIdentifier: "routeCell", for: indexPath) as! RouteCell
         let currentRoute = self.routes[indexPath.row]
@@ -51,6 +66,11 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return routeCell
     }
     
+    /// When a row gets clicked
+    ///
+    /// - Parameters:
+    ///   - tableView: the table view
+    ///   - indexPath: the index path
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }

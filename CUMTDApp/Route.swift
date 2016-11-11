@@ -8,12 +8,16 @@
 
 import UIKit
 
+/// Represents a Route
 class Route {
     var headsign: String
     var expectedMin: Int
     var isIStop: Bool
     var color: String
     
+    /// Initializes a Route from the API data
+    ///
+    /// - Parameter data: the response from the API
     init(data: NSDictionary) {
         self.headsign = (data["headsign"] as? String)!
         self.expectedMin = (data["expected_mins"] as? NSInteger)!
