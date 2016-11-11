@@ -109,17 +109,28 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uXR-lD-sY1">
+                                <rect key="frame" x="170" y="342" width="37" height="37"/>
+                                <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="rZo-CT-XsA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5CE-Mc-Bte"/>
+                            <constraint firstItem="uXR-lD-sY1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gmt-un-2im"/>
                             <constraint firstAttribute="trailing" secondItem="rZo-CT-XsA" secondAttribute="trailing" id="Oao-KC-i1y"/>
                             <constraint firstItem="rZo-CT-XsA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TX0-yG-gS7"/>
                             <constraint firstItem="rZo-CT-XsA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Unm-Ee-p8t"/>
                             <constraint firstAttribute="bottom" secondItem="rZo-CT-XsA" secondAttribute="bottom" id="dOC-pA-9qK"/>
+                            <constraint firstItem="rZo-CT-XsA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qwf-kC-9k9"/>
+                            <constraint firstItem="uXR-lD-sY1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qxf-HT-P0F"/>
+                            <constraint firstItem="uXR-lD-sY1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vf1-6h-1LP"/>
+                            <constraint firstItem="uXR-lD-sY1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xWR-hr-1oI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Nearby Stops" id="yUU-L4-8pB"/>
                     <connections>
+                        <outlet property="loadingIndicator" destination="uXR-lD-sY1" id="bIM-iG-cbz"/>
                         <outlet property="searchDisplayController" destination="SEZ-zg-ZcR" id="Eak-YO-LQ6"/>
                         <outlet property="stopsTableView" destination="rZo-CT-XsA" id="rYc-Fw-Kw1"/>
                     </connections>
