@@ -12,6 +12,7 @@ import UIKit
 class Stop {
     var id: String
     var name: String
+    var isFavorite: Bool
     
     /// Initializes a Stop
     ///
@@ -19,5 +20,6 @@ class Stop {
     init(data: NSDictionary) {
         self.id = (data["stop_id"] as? String)!
         self.name = (data["stop_name"] as? String)!
+        self.isFavorite = LocalData.isFavoriteStop(stopId: self.id)
     }
 }

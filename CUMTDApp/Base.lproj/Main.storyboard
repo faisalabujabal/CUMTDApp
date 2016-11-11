@@ -20,29 +20,47 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="r6D-s8-k53" kind="relationship" relationship="viewControllers" id="T9h-6S-ZGx"/>
                         <segue destination="h2N-HV-zIq" kind="relationship" relationship="viewControllers" id="n8f-93-kUL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ARp-H8-XaE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-100" y="-165"/>
+            <point key="canvasLocation" x="-442" y="-98"/>
+        </scene>
+        <!--Favorite Stops Navigation Controller-->
+        <scene sceneID="0Vu-kg-91U">
+            <objects>
+                <navigationController id="r6D-s8-k53" customClass="FavoriteStopsNavigationController" customModule="CUMTDApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="nz5-WJ-14i"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="82B-zS-Ic3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toStopsViewController" id="EyX-V2-E4K"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uwb-9C-k64" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1110" y="644"/>
         </scene>
         <!--Nearby-->
         <scene sceneID="rIP-Er-umk">
             <objects>
-                <navigationController id="h2N-HV-zIq" sceneMemberID="viewController">
+                <navigationController id="h2N-HV-zIq" customClass="NearbyStopsNavigationController" customModule="CUMTDApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Nearby" image="locationIcon" selectedImage="locationIcon" id="Ue0-L1-PFl"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0cB-cl-wWS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="bop-4O-tBy"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toStopsViewController" id="FfW-T2-339"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cI6-XU-j5X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1265" y="674"/>
+            <point key="canvasLocation" x="129" y="644"/>
         </scene>
         <!--Nearby Stops-->
         <scene sceneID="tne-QT-ifu">
@@ -64,7 +82,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZuE-yn-rBA" id="gzJ-QL-fl8">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goodwin &amp; Main" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0R-Rw-3Jz">
@@ -92,7 +110,6 @@
                             <constraint firstAttribute="bottom" secondItem="rZo-CT-XsA" secondAttribute="bottom" id="dOC-pA-9qK"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Nearby" image="locationIcon" selectedImage="locationIcon" id="jvw-LL-AYL"/>
                     <navigationItem key="navigationItem" title="Nearby Stops" id="yUU-L4-8pB"/>
                     <connections>
                         <outlet property="stopsTableView" destination="rZo-CT-XsA" id="rYc-Fw-Kw1"/>
@@ -100,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1266" y="1557"/>
+            <point key="canvasLocation" x="-513" y="1557"/>
         </scene>
         <!--Goodwin & Main-->
         <scene sceneID="eLg-uP-53I">
@@ -164,17 +181,33 @@
                             <constraint firstAttribute="trailing" secondItem="E5E-uL-lFI" secondAttribute="trailing" id="udR-A0-d9J"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Goodwin &amp; Main" id="JPu-GO-a5i"/>
+                    <navigationItem key="navigationItem" title="Goodwin &amp; Main" id="JPu-GO-a5i">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="xn4-Fi-M6n">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IES-0p-SYC">
+                                <rect key="frame" x="334" y="9" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="starIcon"/>
+                                <connections>
+                                    <action selector="favoriteRouteAction:" destination="Wc9-Yl-XQ4" eventType="touchUpInside" id="w6g-JS-qVN"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="favoriteBtn" destination="IES-0p-SYC" id="3ba-LH-1Qo"/>
                         <outlet property="routesTableView" destination="E5E-uL-lFI" id="at0-XY-UhM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Id-OW-o8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260" y="1556.6716641679161"/>
+            <point key="canvasLocation" x="1452" y="1556.6716641679161"/>
         </scene>
     </scenes>
     <resources>
         <image name="locationIcon" width="25" height="25"/>
+        <image name="starIcon" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="FfW-T2-339"/>
+    </inferredMetricsTieBreakers>
 </document>
