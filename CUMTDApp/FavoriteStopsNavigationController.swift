@@ -15,7 +15,6 @@ class FavoriteStopsNavigationController: UINavigationController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadFavoriteStops()
-        self.navigationBar.backgroundColor = RGBA(hex: "#122847")?.getUIColor()
     }
     
     private func loadFavoriteStops() {

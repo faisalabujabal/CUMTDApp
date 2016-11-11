@@ -80,10 +80,6 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return routeCell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("segue")
-    }
-    
     /// When a row gets clicked
     ///
     /// - Parameters:

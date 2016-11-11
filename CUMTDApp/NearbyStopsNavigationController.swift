@@ -14,17 +14,23 @@ class NearbyStopsNavigationController: UINavigationController, CLLocationManager
     var currentLocation: CLLocation?
     var stops: [Stop] = []
     var performedSegue: Bool = false
-    
+    var stopsViewController: StopsViewController? = nil
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initializeLocationManager()
-        self.navigationBar.backgroundColor = RGBA(hex: "#122847")?.getUIColor()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.performSegue(withIdentifier: "fromNearbyStopsNavController", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! StopsViewController
-        destination.stops = self.stops
-        destination.title = "Nearby"
+        self.stopsViewController = segue.destination as? StopsViewController
+        self.stopsViewController?.stops = self.stops
+        self.stopsViewController?.title = "Nearby"
+        self.stopsViewController?.showIndicatorByDefault = true
     }
     
     /// initializes the location manager
@@ -56,11 +62,9 @@ class NearbyStopsNavigationController: UINavigationController, CLLocationManager
         let lon = (self.currentLocation?.coordinate.longitude)! as Double
         Api.getStops(lat: lat, lon: lon) {(response) -> () in
             DispatchQueue.main.async {
-                if !self.performedSegue {
-                    self.stops = Parser.parseStops(data: response)
-                    self.performSegue(withIdentifier: "fromNearbyStopsNavController", sender: nil)
-                    self.performedSegue = true
-                }
+                self.stopsViewController?.stops = Parser.parseStops(data: response)
+                self.stopsViewController?.refreshTableView()
+                self.stopsViewController?.loadingIndicator.stopAnimating()
             }
         }
     }
