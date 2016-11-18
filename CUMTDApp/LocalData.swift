@@ -74,6 +74,12 @@ class LocalData {
         self.userDefaults?.set(["stop_name": stop.name, "stop_id": stop.id], forKey: self.widgetStopKeys[widgetStopType]!)
     }
     
+    static public func removeWidgetStop(for widgetStopType: WidgetStopType) {
+        if self.userDefaults?.value(forKey: self.widgetStopKeys[widgetStopType]!) != nil {
+            self.userDefaults?.removeObject(forKey: self.widgetStopKeys[widgetStopType]!)
+        }
+    }
+    
     /// gets the widget stop
     ///
     /// - Parameter widgetStopType: the type of the widget stop

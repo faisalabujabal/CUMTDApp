@@ -22,6 +22,7 @@
 		3A3ED5AF1DD5364A007D0D54 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5AE1DD5364A007D0D54 /* Route.swift */; };
 		3A3ED5B11DD54F0C007D0D54 /* RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5B01DD54F0C007D0D54 /* RGBA.swift */; };
 		3A50E2611DD5A1A800909D23 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50E2601DD5A1A800909D23 /* TabBarController.swift */; };
+		3A8413431DDF749200EBC94B /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8413421DDF749200EBC94B /* EmptyState.swift */; };
 		3A9142531DDEAEE100BE7991 /* WidgetStopType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABAA3E81DDE6156003535A2 /* WidgetStopType.swift */; };
 		3A9142541DDEAEE400BE7991 /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DD1D1DD57715007AD2EA /* LocalData.swift */; };
 		3A9142551DDEAEE600BE7991 /* RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5B01DD54F0C007D0D54 /* RGBA.swift */; };
@@ -98,6 +99,7 @@
 		3A3ED5AE1DD5364A007D0D54 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		3A3ED5B01DD54F0C007D0D54 /* RGBA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBA.swift; sourceTree = "<group>"; };
 		3A50E2601DD5A1A800909D23 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		3A8413421DDF749200EBC94B /* EmptyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		3A9142521DDEAE7800BE7991 /* FavoriteStops.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FavoriteStops.entitlements; sourceTree = "<group>"; };
 		3A9A50B71DDEFF1F0031F118 /* ShortcutIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutIdentifier.swift; sourceTree = "<group>"; };
 		3ABAA3E81DDE6156003535A2 /* WidgetStopType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetStopType.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				3A3ED5A81DD518A9007D0D54 /* RouteCell.swift */,
 				3ADFC7891DDDA906000081E8 /* WidgetStopCell.swift */,
 				55B4F4141DD6759A001AAD07 /* StopMap.swift */,
+				3A8413421DDF749200EBC94B /* EmptyState.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				3A077E601DD4404300BDF81C /* StopsViewController.swift in Sources */,
 				3A3ED5A91DD518A9007D0D54 /* RouteCell.swift in Sources */,
 				3A0B7BB21DD462D700FB1841 /* RoutesViewController.swift in Sources */,
+				3A8413431DDF749200EBC94B /* EmptyState.swift in Sources */,
 				3A3ED5AD1DD534E6007D0D54 /* Parser.swift in Sources */,
 				3A0B7BB01DD4584500FB1841 /* StopCell.swift in Sources */,
 				3AF8DD201DD58A69007AD2EA /* FavoriteStopsNavigationController.swift in Sources */,

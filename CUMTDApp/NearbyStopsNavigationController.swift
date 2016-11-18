@@ -80,9 +80,13 @@ class NearbyStopsNavigationController: UINavigationController, CLLocationManager
         let lon = (self.currentLocation?.coordinate.longitude)! as Double
         Api.getStops(lat: lat, lon: lon) {(response) -> () in
             DispatchQueue.main.async {
-                self.stopsViewController?.stops = Parser.parseStops(data: response)
-                self.stopsViewController?.refreshTableView()
-                self.stopsViewController?.loadingIndicator.stopAnimating()
+                if response == nil {
+                    self.stopsViewController?.updateEmptyStateMessage(message: "Network error.")
+                } else {
+                    let stops =  Parser.parseStops(data: response!)
+                    self.stopsViewController?.stops = stops
+                    self.stopsViewController?.updateEmptyStateMessage(message: "No nearby stops.", basedOn: stops.count)
+                }
             }
         }
     }

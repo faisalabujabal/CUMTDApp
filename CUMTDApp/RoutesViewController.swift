@@ -13,6 +13,7 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var stop: Stop? = nil
     var routes: [Route] = []
     var refreshController: UIRefreshControl = UIRefreshControl()
+    var emptyStateMessage: String = ""
     
     @IBOutlet weak var routesTableView: UITableView!
     @IBOutlet weak var favoriteBtn: UIButton!
@@ -54,7 +55,14 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc private func loadData() {
         Api.getRoutes(stopId: (self.stop?.id)!) { (response) -> () in
             DispatchQueue.main.async {
-                self.routes = Parser.parseRoutes(data: response)
+                if response == nil {
+                    self.emptyStateMessage = "Network Error"
+                } else {
+                    self.routes = Parser.parseRoutes(data: response!)
+                    if self.routes.count == 0 {
+                        self.emptyStateMessage = "No routes at the moment."
+                    }
+                }
                 self.routesTableView.reloadData()
                 self.loadingIndicator.stopAnimating()
                 self.refreshController.endRefreshing()
@@ -78,7 +86,14 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     ///   - section: the section
     /// - Returns: the number of rows
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.routes.count
+        let count = self.routes.count
+        if count == 0 {
+            self.routesTableView.backgroundView = EmptyState.getEmptyStateView(reason: emptyStateMessage)
+        } else {
+            self.routesTableView.backgroundView = nil
+            self.emptyStateMessage = ""
+        }
+        return count
     }
     
     /// The row content

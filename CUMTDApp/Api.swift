@@ -19,7 +19,7 @@ class Api {
     ///   - lat: the latitude location
     ///   - lon: the longitude location
     ///   - completionHandler: closure that gets called when the response gets back
-    static func getStops(lat: Double, lon: Double, completionHandler: @escaping ([NSDictionary]) -> ()) {
+    static func getStops(lat: Double, lon: Double, completionHandler: @escaping ([NSDictionary]?) -> ()) {
         let params: (NSDictionary) = [
             "lat": lat,
             "lon": lon
@@ -27,9 +27,9 @@ class Api {
         requestFromApi(endpoint: "get_stops", params: params, completionHandler: completionHandler)
     }
     
-    static func getStops(searchTerm: String, completionHandler: @escaping ([NSDictionary]) -> ()) {
+    static func getStops(searchTerm: String, completionHandler: @escaping ([NSDictionary]?) -> ()) {
         let params = [
-            "name": searchTerm
+            "query": searchTerm
         ]
         requestFromApi(endpoint: "get_stops", params: params as NSDictionary, completionHandler: completionHandler)
     }
@@ -39,7 +39,7 @@ class Api {
     /// - Parameters:
     ///   - stopId: the stop id for the routes
     ///   - completionHandler: closure that gets called when the response gets back
-    static func getRoutes(stopId: String, completionHandler: @escaping ([NSDictionary]) -> ()) {
+    static func getRoutes(stopId: String, completionHandler: @escaping ([NSDictionary]?) -> ()) {
         let params: (NSDictionary) = [
             "stop_id": stopId
         ]
@@ -53,9 +53,11 @@ class Api {
     ///   - params: dictionary parameters
     ///   - completionHandler: closure that gets called when the response gets back
     static private func requestFromApi(endpoint: String, params: NSDictionary,
-                                       completionHandler: @escaping ([NSDictionary]) -> ()) {
+                                       completionHandler: @escaping ([NSDictionary]?) -> ()) {
         let queryParams = paramDictToString(params: params)
-        let url = NSURL(string: "\(self.apiPath)/\(endpoint)?\(queryParams)")
+        let requestString = "\(self.apiPath)/\(endpoint)?\(queryParams)"
+        let escapedAddress = requestString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+        let url = NSURL(string: escapedAddress!)
         var request = URLRequest(url: url as! URL)
         request.httpMethod = "GET"
         let session = URLSession.shared
@@ -64,6 +66,8 @@ class Api {
             if data != nil {
                 let responseDictionary = try! JSONSerialization.jsonObject(with: data!) as? [NSDictionary]
                 completionHandler(responseDictionary!)
+            } else if err != nil {
+                completionHandler(nil)
             } else {
                 completionHandler([])
             }
