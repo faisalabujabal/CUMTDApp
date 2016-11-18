@@ -58,8 +58,11 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if self.stops.isEmpty {
             return
         }
-        self.stopsSearchResult = self.stops.filter({ (currStop: Stop) -> Bool in
-            return currStop.name.lowercased().contains(searchText.lowercased())
+        self.loadingIndicator.startAnimating()
+        Api.getStops(searchTerm: searchText, completionHandler: { (response) in
+            self.stopsSearchResult = Parser.parseStops(data: response)
+            self.stopsTableView.reloadData()
+            self.loadingIndicator.stopAnimating()
         })
     }
     
@@ -67,8 +70,12 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     ///
     /// - Parameter searchController: the controller whose search bar is being manipulated
     func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchText: searchController.searchBar.text!)
-        stopsTableView.reloadData()
+        // do nothing unless the user clicks on the search button
+        // this function should stay here to fullfill the protocl
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        filterContentForSearchText(searchText: searchBar.text!)
     }
     
     /// delegate method being called when user start typing
@@ -77,7 +84,6 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         shouldShowSearchResult = true
         self.stopsTableView.reloadData()
-        
     }
     
     /// delegate method being called when user hit cancel button
@@ -95,7 +101,6 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     ///   - indexPath: the index path
     /// - Returns: the cell that should be rendered
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let stopListCell = tableView.dequeueReusableCell(withIdentifier: "stopCell", for: indexPath) as! StopCell
         let stopsList = shouldShowSearchResult ? self.stopsSearchResult : self.stops
         let currentStop = stopsList[indexPath.row]
@@ -114,7 +119,6 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if shouldShowSearchResult {
             return self.stopsSearchResult.count
         }
-        
         return self.stops.count
     }
     
@@ -136,11 +140,15 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     ///   - indexPath: the index path
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         searchController.isActive = false
-        
-        performSegue(withIdentifier: "showRoutesFromStops", sender: self.stops[indexPath.row])
+        let currentStopsList = self.shouldShowSearchResult ? self.stopsSearchResult : self.stops
+        performSegue(withIdentifier: "showRoutesFromStops", sender: currentStopsList[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
 
         searchBarCancelButtonClicked(searchController.searchBar)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
     }
     
     /// Helper function that refreshes the view

@@ -34,4 +34,12 @@ class Parser {
         }
         return routes
     }
+    
+    static func parseLocalFavoriteStops(data: NSDictionary) -> [Stop] {
+        var stops: [Stop] = []
+        for (stopId, stopName) in data {
+            stops.append(Stop(data: ["stop_id": stopId, "stop_name": stopName]))
+        }
+        return stops
+    }
 }

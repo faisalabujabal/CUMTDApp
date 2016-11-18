@@ -27,6 +27,13 @@ class Api {
         requestFromApi(endpoint: "get_stops", params: params, completionHandler: completionHandler)
     }
     
+    static func getStops(searchTerm: String, completionHandler: @escaping ([NSDictionary]) -> ()) {
+        let params = [
+            "name": searchTerm
+        ]
+        requestFromApi(endpoint: "get_stops", params: params as NSDictionary, completionHandler: completionHandler)
+    }
+    
     /// Returns the routes based on the stopId
     ///
     /// - Parameters:

@@ -22,6 +22,22 @@
 		3A3ED5AF1DD5364A007D0D54 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5AE1DD5364A007D0D54 /* Route.swift */; };
 		3A3ED5B11DD54F0C007D0D54 /* RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5B01DD54F0C007D0D54 /* RGBA.swift */; };
 		3A50E2611DD5A1A800909D23 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50E2601DD5A1A800909D23 /* TabBarController.swift */; };
+		3A9142531DDEAEE100BE7991 /* WidgetStopType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABAA3E81DDE6156003535A2 /* WidgetStopType.swift */; };
+		3A9142541DDEAEE400BE7991 /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DD1D1DD57715007AD2EA /* LocalData.swift */; };
+		3A9142551DDEAEE600BE7991 /* RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5B01DD54F0C007D0D54 /* RGBA.swift */; };
+		3A9142561DDEAF1400BE7991 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5AA1DD5339B007D0D54 /* Stop.swift */; };
+		3A9142571DDEAF9A00BE7991 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A077E641DD4404300BDF81C /* Assets.xcassets */; };
+		3A9142581DDEB63900BE7991 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5AE1DD5364A007D0D54 /* Route.swift */; };
+		3A9142591DDEB66000BE7991 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A077E821DD4428500BDF81C /* Api.swift */; };
+		3A91425A1DDEB6BA00BE7991 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5AC1DD534E6007D0D54 /* Parser.swift */; };
+		3A91425B1DDEB72000BE7991 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5A81DD518A9007D0D54 /* RouteCell.swift */; };
+		3ABAA3E91DDE6157003535A2 /* WidgetStopType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABAA3E81DDE6156003535A2 /* WidgetStopType.swift */; };
+		3ABAA3F61DDEADA2003535A2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADFC76F1DDD9828000081E8 /* NotificationCenter.framework */; };
+		3ABAA3F91DDEADA2003535A2 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABAA3F81DDEADA2003535A2 /* TodayViewController.swift */; };
+		3ABAA3FC1DDEADA2003535A2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ABAA3FA1DDEADA2003535A2 /* MainInterface.storyboard */; };
+		3ABAA4001DDEADA2003535A2 /* FavoriteStops.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3ABAA3F51DDEADA2003535A2 /* FavoriteStops.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3ADFC7861DDDA0F1000081E8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADFC7851DDDA0F1000081E8 /* SettingsViewController.swift */; };
+		3ADFC78A1DDDA906000081E8 /* WidgetStopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADFC7891DDDA906000081E8 /* WidgetStopCell.swift */; };
 		3AF8DD1E1DD57715007AD2EA /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DD1D1DD57715007AD2EA /* LocalData.swift */; };
 		3AF8DD201DD58A69007AD2EA /* FavoriteStopsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DD1F1DD58A69007AD2EA /* FavoriteStopsNavigationController.swift */; };
 		3AF8DD221DD58B45007AD2EA /* NearbyStopsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DD211DD58B45007AD2EA /* NearbyStopsNavigationController.swift */; };
@@ -38,7 +54,28 @@
 			remoteGlobalIDString = 3A077E591DD4404300BDF81C;
 			remoteInfo = CUMTDApp;
 		};
+		3ABAA3FE1DDEADA2003535A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A077E521DD4404300BDF81C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3ABAA3F41DDEADA2003535A2;
+			remoteInfo = FavoriteStops;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3ADFC77E1DDD9829000081E8 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3ABAA4001DDEADA2003535A2 /* FavoriteStops.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3A077E5A1DD4404300BDF81C /* CUMTDApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CUMTDApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +97,16 @@
 		3A3ED5AE1DD5364A007D0D54 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		3A3ED5B01DD54F0C007D0D54 /* RGBA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBA.swift; sourceTree = "<group>"; };
 		3A50E2601DD5A1A800909D23 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		3A9142521DDEAE7800BE7991 /* FavoriteStops.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FavoriteStops.entitlements; sourceTree = "<group>"; };
+		3ABAA3E81DDE6156003535A2 /* WidgetStopType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetStopType.swift; sourceTree = "<group>"; };
+		3ABAA3EF1DDEAC1F003535A2 /* CUMTDApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CUMTDApp.entitlements; sourceTree = "<group>"; };
+		3ABAA3F51DDEADA2003535A2 /* FavoriteStops.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FavoriteStops.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ABAA3F81DDEADA2003535A2 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		3ABAA3FB1DDEADA2003535A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		3ABAA3FD1DDEADA2003535A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3ADFC76F1DDD9828000081E8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		3ADFC7851DDDA0F1000081E8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3ADFC7891DDDA906000081E8 /* WidgetStopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetStopCell.swift; sourceTree = "<group>"; };
 		3AF8DD1D1DD57715007AD2EA /* LocalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
 		3AF8DD1F1DD58A69007AD2EA /* FavoriteStopsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStopsNavigationController.swift; sourceTree = "<group>"; };
 		3AF8DD211DD58B45007AD2EA /* NearbyStopsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyStopsNavigationController.swift; sourceTree = "<group>"; };
@@ -84,6 +131,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3ABAA3F21DDEADA2003535A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ABAA3F61DDEADA2003535A2 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -92,6 +147,8 @@
 			children = (
 				3A077E5C1DD4404300BDF81C /* CUMTDApp */,
 				3A077E711DD4404300BDF81C /* CUMTDAppTests */,
+				3ABAA3F71DDEADA2003535A2 /* FavoriteStops */,
+				3ADFC76E1DDD9828000081E8 /* Frameworks */,
 				3A077E5B1DD4404300BDF81C /* Products */,
 				55B4F4111DD673B7001AAD07 /* Frameworks */,
 			);
@@ -102,6 +159,7 @@
 			children = (
 				3A077E5A1DD4404300BDF81C /* CUMTDApp.app */,
 				3A077E6E1DD4404300BDF81C /* CUMTDAppTests.xctest */,
+				3ABAA3F51DDEADA2003535A2 /* FavoriteStops.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +167,7 @@
 		3A077E5C1DD4404300BDF81C /* CUMTDApp */ = {
 			isa = PBXGroup;
 			children = (
+				3ABAA3EF1DDEAC1F003535A2 /* CUMTDApp.entitlements */,
 				3A077E811DD4426100BDF81C /* Internals */,
 				3A077E7E1DD440CE00BDF81C /* Views */,
 				3A077E7D1DD4409B00BDF81C /* ViewControllers */,
@@ -139,6 +198,7 @@
 				3AF8DD211DD58B45007AD2EA /* NearbyStopsNavigationController.swift */,
 				55B4F40F1DD6711A001AAD07 /* StopDetailViewController.swift */,
 				3A50E2601DD5A1A800909D23 /* TabBarController.swift */,
+				3ADFC7851DDDA0F1000081E8 /* SettingsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -148,6 +208,7 @@
 			children = (
 				3A0B7BAF1DD4584500FB1841 /* StopCell.swift */,
 				3A3ED5A81DD518A9007D0D54 /* RouteCell.swift */,
+				3ADFC7891DDDA906000081E8 /* WidgetStopCell.swift */,
 				55B4F4141DD6759A001AAD07 /* StopMap.swift */,
 			);
 			name = Views;
@@ -162,14 +223,26 @@
 				3A3ED5AE1DD5364A007D0D54 /* Route.swift */,
 				3A3ED5B01DD54F0C007D0D54 /* RGBA.swift */,
 				3AF8DD1D1DD57715007AD2EA /* LocalData.swift */,
+				3ABAA3E81DDE6156003535A2 /* WidgetStopType.swift */,
 			);
 			name = Internals;
 			sourceTree = "<group>";
 		};
-		55B4F4111DD673B7001AAD07 /* Frameworks */ = {
+		3ABAA3F71DDEADA2003535A2 /* FavoriteStops */ = {
 			isa = PBXGroup;
 			children = (
-				55B4F4121DD673B7001AAD07 /* MapKit.framework */,
+				3A9142521DDEAE7800BE7991 /* FavoriteStops.entitlements */,
+				3ABAA3F81DDEADA2003535A2 /* TodayViewController.swift */,
+				3ABAA3FA1DDEADA2003535A2 /* MainInterface.storyboard */,
+				3ABAA3FD1DDEADA2003535A2 /* Info.plist */,
+			);
+			path = FavoriteStops;
+			sourceTree = "<group>";
+		};
+		3ADFC76E1DDD9828000081E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3ADFC76F1DDD9828000081E8 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -184,10 +257,12 @@
 				3A077E561DD4404300BDF81C /* Sources */,
 				3A077E571DD4404300BDF81C /* Frameworks */,
 				3A077E581DD4404300BDF81C /* Resources */,
+				3ADFC77E1DDD9829000081E8 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3ABAA3FF1DDEADA2003535A2 /* PBXTargetDependency */,
 			);
 			name = CUMTDApp;
 			productName = CUMTDApp;
@@ -212,6 +287,23 @@
 			productReference = 3A077E6E1DD4404300BDF81C /* CUMTDAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		3ABAA3F41DDEADA2003535A2 /* FavoriteStops */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3ABAA4011DDEADA2003535A2 /* Build configuration list for PBXNativeTarget "FavoriteStops" */;
+			buildPhases = (
+				3ABAA3F11DDEADA2003535A2 /* Sources */,
+				3ABAA3F21DDEADA2003535A2 /* Frameworks */,
+				3ABAA3F31DDEADA2003535A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FavoriteStops;
+			productName = FavoriteStops;
+			productReference = 3ABAA3F51DDEADA2003535A2 /* FavoriteStops.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -227,7 +319,7 @@
 						DevelopmentTeam = 3PHNE428JG;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
-							com.apple.Maps.iOS = {
+							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
 						};
@@ -237,6 +329,16 @@
 						DevelopmentTeam = 3PHNE428JG;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 3A077E591DD4404300BDF81C;
+					};
+					3ABAA3F41DDEADA2003535A2 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 3PHNE428JG;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -255,6 +357,7 @@
 			targets = (
 				3A077E591DD4404300BDF81C /* CUMTDApp */,
 				3A077E6D1DD4404300BDF81C /* CUMTDAppTests */,
+				3ABAA3F41DDEADA2003535A2 /* FavoriteStops */,
 			);
 		};
 /* End PBXProject section */
@@ -277,6 +380,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3ABAA3F31DDEADA2003535A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A9142571DDEAF9A00BE7991 /* Assets.xcassets in Resources */,
+				3ABAA3FC1DDEADA2003535A2 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -293,9 +405,12 @@
 				3A3ED5AD1DD534E6007D0D54 /* Parser.swift in Sources */,
 				3A0B7BB01DD4584500FB1841 /* StopCell.swift in Sources */,
 				3AF8DD201DD58A69007AD2EA /* FavoriteStopsNavigationController.swift in Sources */,
+				3ADFC78A1DDDA906000081E8 /* WidgetStopCell.swift in Sources */,
 				55B4F4151DD6759A001AAD07 /* StopMap.swift in Sources */,
 				3A077E831DD4428500BDF81C /* Api.swift in Sources */,
 				3AF8DD1E1DD57715007AD2EA /* LocalData.swift in Sources */,
+				3ABAA3E91DDE6157003535A2 /* WidgetStopType.swift in Sources */,
+				3ADFC7861DDDA0F1000081E8 /* SettingsViewController.swift in Sources */,
 				3A50E2611DD5A1A800909D23 /* TabBarController.swift in Sources */,
 				3AF8DD221DD58B45007AD2EA /* NearbyStopsNavigationController.swift in Sources */,
 				3A077E5E1DD4404300BDF81C /* AppDelegate.swift in Sources */,
@@ -311,6 +426,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3ABAA3F11DDEADA2003535A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A9142541DDEAEE400BE7991 /* LocalData.swift in Sources */,
+				3A9142551DDEAEE600BE7991 /* RGBA.swift in Sources */,
+				3A9142561DDEAF1400BE7991 /* Stop.swift in Sources */,
+				3A9142581DDEB63900BE7991 /* Route.swift in Sources */,
+				3A91425A1DDEB6BA00BE7991 /* Parser.swift in Sources */,
+				3A91425B1DDEB72000BE7991 /* RouteCell.swift in Sources */,
+				3ABAA3F91DDEADA2003535A2 /* TodayViewController.swift in Sources */,
+				3A9142591DDEB66000BE7991 /* Api.swift in Sources */,
+				3A9142531DDEAEE100BE7991 /* WidgetStopType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -318,6 +449,11 @@
 			isa = PBXTargetDependency;
 			target = 3A077E591DD4404300BDF81C /* CUMTDApp */;
 			targetProxy = 3A077E6F1DD4404300BDF81C /* PBXContainerItemProxy */;
+		};
+		3ABAA3FF1DDEADA2003535A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3ABAA3F41DDEADA2003535A2 /* FavoriteStops */;
+			targetProxy = 3ABAA3FE1DDEADA2003535A2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -336,6 +472,14 @@
 				3A077E671DD4404300BDF81C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3ABAA3FA1DDEADA2003535A2 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3ABAA3FB1DDEADA2003535A2 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -435,7 +579,9 @@
 		3A077E781DD4404300BDF81C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CUMTDApp/CUMTDApp.entitlements;
 				DEVELOPMENT_TEAM = 3PHNE428JG;
 				INFOPLIST_FILE = CUMTDApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -448,7 +594,9 @@
 		3A077E791DD4404300BDF81C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CUMTDApp/CUMTDApp.entitlements;
 				DEVELOPMENT_TEAM = 3PHNE428JG;
 				INFOPLIST_FILE = CUMTDApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -488,6 +636,34 @@
 			};
 			name = Release;
 		};
+		3ABAA4021DDEADA2003535A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FavoriteStops/FavoriteStops.entitlements;
+				DEVELOPMENT_TEAM = 3PHNE428JG;
+				INFOPLIST_FILE = FavoriteStops/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "faisal-oscar.CUMTDApp.Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		3ABAA4031DDEADA2003535A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FavoriteStops/FavoriteStops.entitlements;
+				DEVELOPMENT_TEAM = 3PHNE428JG;
+				INFOPLIST_FILE = FavoriteStops/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "faisal-oscar.CUMTDApp.Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -514,6 +690,15 @@
 			buildConfigurations = (
 				3A077E7B1DD4404300BDF81C /* Debug */,
 				3A077E7C1DD4404300BDF81C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3ABAA4011DDEADA2003535A2 /* Build configuration list for PBXNativeTarget "FavoriteStops" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ABAA4021DDEADA2003535A2 /* Debug */,
+				3ABAA4031DDEADA2003535A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
