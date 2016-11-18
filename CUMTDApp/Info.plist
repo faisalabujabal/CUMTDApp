@@ -2,6 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Nearby Stops</string>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>locationIcon</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>faisal-oscar.cumtd.nearbyShortcutItem</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>faisal-oscar.cumtd.favoritesShortcutItem</string>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeFavorite</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Favorite Stops</string>
+		</dict>
+	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>To get the nearby stops</string>
 	<key>CFBundleDevelopmentRegion</key>
