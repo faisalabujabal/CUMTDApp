@@ -14,17 +14,32 @@ class NearbyStopsNavigationController: UINavigationController, CLLocationManager
     var currentLocation: CLLocation?
     var stops: [Stop] = []
     var performedSegue: Bool = false
-    
+    var stopsViewController: StopsViewController? = nil
+
+    /// this function gets executed before the view shows up
+    ///
+    /// - Parameter animated: the animation
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initializeLocationManager()
     }
     
+    /// this function gets called when the view loads
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.performSegue(withIdentifier: "fromNearbyStopsNavController", sender: nil)
+    }
+    
+    /// this function gets called before the segue
+    ///
+    /// - Parameters:
+    ///   - segue: the segue object
+    ///   - sender: the executor of the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(segue.destination)
-        let destination = segue.destination as! StopsViewController
-        destination.stops = self.stops
-        destination.title = "Nearby"
+        self.stopsViewController = segue.destination as? StopsViewController
+        self.stopsViewController?.stops = self.stops
+        self.stopsViewController?.title = "Nearby"
+        self.stopsViewController?.showIndicatorByDefault = true
     }
     
     /// initializes the location manager
@@ -56,11 +71,9 @@ class NearbyStopsNavigationController: UINavigationController, CLLocationManager
         let lon = (self.currentLocation?.coordinate.longitude)! as Double
         Api.getStops(lat: lat, lon: lon) {(response) -> () in
             DispatchQueue.main.async {
-                if !self.performedSegue {
-                    self.stops = Parser.parseStops(data: response)
-                    self.performSegue(withIdentifier: "fromNearbyStopsNavController", sender: nil)
-                    self.performedSegue = true
-                }
+                self.stopsViewController?.stops = Parser.parseStops(data: response)
+                self.stopsViewController?.refreshTableView()
+                self.stopsViewController?.loadingIndicator.stopAnimating()
             }
         }
     }

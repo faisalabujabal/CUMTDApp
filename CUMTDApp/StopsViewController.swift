@@ -14,11 +14,11 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var stops: [Stop] = []
     var stopsSearchResult: [Stop] = []
     var shouldShowSearchResult: Bool = false;
-    
     var searchController: UISearchController!
+    var showIndicatorByDefault: Bool = false
     
     @IBOutlet weak var stopsTableView: UITableView!
-    
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     /// function that gets called after the view gets loaded
     override func viewDidLoad() {
@@ -27,18 +27,28 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.stopsTableView.delegate = self
         self.stopsTableView.dataSource = self
         configureSearchController()
+        initializeStyles()
+        
+        if self.showIndicatorByDefault {
+            self.loadingIndicator.startAnimating()
+        }
     }
     
+    /// helper function that initializes any styless
+    private func initializeStyles() {
+        self.stopsTableView.separatorColor = UIColor.clear
+    }
     
     /// setup the search controller
-    func configureSearchController() {
+    private func configureSearchController() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
         searchController.dimsBackgroundDuringPresentation = false
         
         stopsTableView.tableHeaderView = searchController.searchBar
-
+        // add offset to hide the search bar by default
+        stopsTableView.contentOffset = CGPoint(x: 0, y: searchController.searchBar.frame.size.height - stopsTableView.contentOffset.y)
     }
     
     /// filter the stops to display the matching result
@@ -133,6 +143,7 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         searchBarCancelButtonClicked(searchController.searchBar)
     }
     
+    /// Helper function that refreshes the view
     public func refreshTableView() {
         if self.stopsTableView != nil {
             self.stopsTableView.reloadData()

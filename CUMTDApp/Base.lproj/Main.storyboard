@@ -14,7 +14,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Hvg-Of-bB8">
             <objects>
-                <tabBarController id="4UH-yq-yaH" sceneMemberID="viewController">
+                <tabBarController id="4UH-yq-yaH" customClass="TabBarController" customModule="CUMTDApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="auE-OV-Nw7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -91,7 +91,7 @@
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZuE-yn-rBA" id="gzJ-QL-fl8">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goodwin &amp; Main" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0R-Rw-3Jz">
@@ -110,17 +110,28 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uXR-lD-sY1">
+                                <rect key="frame" x="170" y="342" width="37" height="37"/>
+                                <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="rZo-CT-XsA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5CE-Mc-Bte"/>
+                            <constraint firstItem="uXR-lD-sY1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gmt-un-2im"/>
                             <constraint firstAttribute="trailing" secondItem="rZo-CT-XsA" secondAttribute="trailing" id="Oao-KC-i1y"/>
                             <constraint firstItem="rZo-CT-XsA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TX0-yG-gS7"/>
                             <constraint firstItem="rZo-CT-XsA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Unm-Ee-p8t"/>
                             <constraint firstAttribute="bottom" secondItem="rZo-CT-XsA" secondAttribute="bottom" id="dOC-pA-9qK"/>
+                            <constraint firstItem="rZo-CT-XsA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qwf-kC-9k9"/>
+                            <constraint firstItem="uXR-lD-sY1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qxf-HT-P0F"/>
+                            <constraint firstItem="uXR-lD-sY1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vf1-6h-1LP"/>
+                            <constraint firstItem="uXR-lD-sY1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xWR-hr-1oI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Nearby Stops" id="yUU-L4-8pB"/>
                     <connections>
+                        <outlet property="loadingIndicator" destination="uXR-lD-sY1" id="bIM-iG-cbz"/>
                         <outlet property="searchDisplayController" destination="SEZ-zg-ZcR" id="Eak-YO-LQ6"/>
                         <outlet property="stopsTableView" destination="rZo-CT-XsA" id="rYc-Fw-Kw1"/>
                     </connections>
@@ -191,12 +202,20 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5en-DZ-YBt">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="5en-DZ-YBt" firstAttribute="centerX" secondItem="w3K-No-K9O" secondAttribute="centerX" id="23L-gJ-Ygd"/>
+                            <constraint firstItem="5en-DZ-YBt" firstAttribute="centerY" secondItem="w3K-No-K9O" secondAttribute="centerY" id="F70-DS-Qhz"/>
                             <constraint firstItem="E5E-uL-lFI" firstAttribute="top" secondItem="w3K-No-K9O" secondAttribute="top" id="RmN-lo-knJ"/>
+                            <constraint firstItem="E5E-uL-lFI" firstAttribute="centerY" secondItem="w3K-No-K9O" secondAttribute="centerY" id="Vrt-Wh-r4K"/>
                             <constraint firstAttribute="bottom" secondItem="E5E-uL-lFI" secondAttribute="bottom" id="bwq-Qp-v6w"/>
                             <constraint firstItem="E5E-uL-lFI" firstAttribute="leading" secondItem="w3K-No-K9O" secondAttribute="leading" id="mDD-XM-H1M"/>
+                            <constraint firstItem="E5E-uL-lFI" firstAttribute="centerX" secondItem="w3K-No-K9O" secondAttribute="centerX" id="pEY-oE-L57"/>
                             <constraint firstAttribute="trailing" secondItem="E5E-uL-lFI" secondAttribute="trailing" id="udR-A0-d9J"/>
                         </constraints>
                     </view>
@@ -221,12 +240,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="favoriteBtn" destination="IES-0p-SYC" id="3ba-LH-1Qo"/>
+                        <outlet property="loadingIndicator" destination="5en-DZ-YBt" id="oNJ-nd-fXV"/>
                         <outlet property="routesTableView" destination="E5E-uL-lFI" id="at0-XY-UhM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Id-OW-o8e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="1556.6716641679161"/>
+            <point key="canvasLocation" x="593" y="1557"/>
         </scene>
         <!--Stop Detail View Controller-->
         <scene sceneID="7mt-ul-oLI">
@@ -264,6 +284,6 @@
         <image name="starIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FfW-T2-339"/>
+        <segue reference="EyX-V2-E4K"/>
     </inferredMetricsTieBreakers>
 </document>

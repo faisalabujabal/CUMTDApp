@@ -15,6 +15,7 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var routesTableView: UITableView!
     @IBOutlet weak var favoriteBtn: UIButton!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     @IBAction func favoriteRouteAction(_ sender: UIButton) {
         if self.stop != nil {
@@ -37,11 +38,13 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.routesTableView.dataSource = self
         
         intitializeStyles()
+        self.loadingIndicator.startAnimating()
         
         Api.getRoutes(stopId: (self.stop?.id)!) { (response) -> () in
             DispatchQueue.main.async {
                 self.routes = Parser.parseRoutes(data: response)
                 self.routesTableView.reloadData()
+                self.loadingIndicator.stopAnimating()
             }
         }
     }
