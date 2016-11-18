@@ -40,6 +40,9 @@ class NearbyStopsNavigationController: UINavigationController, CLLocationManager
         self.stopsViewController?.stops = self.stops
         self.stopsViewController?.title = "Nearby"
         self.stopsViewController?.showIndicatorByDefault = true
+        self.stopsViewController?.reloadStops = {
+            self.reloadData()
+        }
     }
     
     /// initializes the location manager
@@ -49,6 +52,12 @@ class NearbyStopsNavigationController: UINavigationController, CLLocationManager
         self.locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.locationManager?.requestLocation()
         self.locationManager?.requestWhenInUseAuthorization()
+    }
+    
+    /// This function gets passed in to the table view and gets 
+    /// called when pull to refresh happens
+    private func reloadData() {
+        self.locationManager?.requestLocation()
     }
     
     /// If getting the location fails

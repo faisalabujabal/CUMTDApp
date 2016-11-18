@@ -101,6 +101,7 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    /// Changes the favorite icon based on if the stop is favorite or not
     private func updateStarIcon() {
         if (stop?.isFavorite)! {
             self.favoriteBtn.setBackgroundImage(UIImage(named: "starIconFilled"), for: UIControlState.normal)
@@ -108,7 +109,5 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.favoriteBtn.setBackgroundImage(UIImage(named: "starIcon"), for: UIControlState.normal)
         }
     }
-    
-
     
 }
