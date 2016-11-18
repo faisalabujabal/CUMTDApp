@@ -12,6 +12,7 @@ import UIKit
 class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var stop: Stop? = nil
     var routes: [Route] = []
+    var refreshController: UIRefreshControl = UIRefreshControl()
     
     @IBOutlet weak var routesTableView: UITableView!
     @IBOutlet weak var favoriteBtn: UIButton!
@@ -38,13 +39,25 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.routesTableView.dataSource = self
         
         intitializeStyles()
+        initializeRefreshController()
         self.loadingIndicator.startAnimating()
-        
+        loadData()
+    }
+    
+    /// Initialzes the UIRefreshControl and adds it to the view
+    private func initializeRefreshController() {
+        self.refreshController.addTarget("refresh", action: #selector(loadData), for: UIControlEvents.valueChanged)
+        self.routesTableView.addSubview(self.refreshController)
+    }
+    
+    /// Loads the data from the api
+    @objc private func loadData() {
         Api.getRoutes(stopId: (self.stop?.id)!) { (response) -> () in
             DispatchQueue.main.async {
                 self.routes = Parser.parseRoutes(data: response)
                 self.routesTableView.reloadData()
                 self.loadingIndicator.stopAnimating()
+                self.refreshController.endRefreshing()
             }
         }
     }
@@ -87,7 +100,6 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let nextViewController = segue.destination as? StopDetailViewController{
             nextViewController.stop = self.stop
             nextViewController.title = self.stop?.name
-            
         }
     }
 
