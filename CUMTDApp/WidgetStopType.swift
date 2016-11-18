@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Widget type enum
 enum WidgetStopType {
     case homeStop
     case universityStop

@@ -19,7 +19,13 @@ class Stop: NSObject, NSCoding {
     /// - Parameter data: dictionary data
     init(data: NSDictionary) {
         self.id = (data["stop_id"] as? String)!
-        self.name = (data["stop_name"] as? String)!
+        if data.value(forKey: "stop_name") != nil {
+            self.name = (data["stop_name"] as? String)!
+        } else if data.value(forKey: "name") != nil {
+            self.name = (data["name"] as? String)!
+        } else {
+            self.name = ""
+        }
         self.isFavorite = LocalData.isFavoriteStop(stopId: self.id)
     }
     

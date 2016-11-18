@@ -65,10 +65,19 @@ class LocalData {
         self.userDefaults?.synchronize()
     }
     
+    /// Updates the widget stop
+    ///
+    /// - Parameters:
+    ///   - widgetStopType: the type of the widget stop
+    ///   - stop: the stop
     static public func updateWidgetStop(for widgetStopType: WidgetStopType, stop: Stop) {
         self.userDefaults?.set(["stop_name": stop.name, "stop_id": stop.id], forKey: self.widgetStopKeys[widgetStopType]!)
     }
     
+    /// gets the widget stop
+    ///
+    /// - Parameter widgetStopType: the type of the widget stop
+    /// - Returns: the stop based on the type
     static public func getWidgetStop(for widgetStopType: WidgetStopType) -> Stop? {
         let data = self.userDefaults?.value(forKey: self.widgetStopKeys[widgetStopType]!)
         if data == nil {
