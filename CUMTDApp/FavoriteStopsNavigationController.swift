@@ -44,5 +44,8 @@ class FavoriteStopsNavigationController: UINavigationController {
         self.tableViewController = segue.destination as? StopsViewController
         self.tableViewController?.stops = self.favoriteStops
         self.tableViewController?.title = "Favorites"
+        self.tableViewController?.reloadStops = {
+            self.loadFavoriteStops()
+        }
     }
 }

@@ -16,6 +16,8 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var shouldShowSearchResult: Bool = false;
     var searchController: UISearchController!
     var showIndicatorByDefault: Bool = false
+    var refreshController: UIRefreshControl? = nil
+    var reloadStops: (() -> ())? = nil
     
     @IBOutlet weak var stopsTableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -28,6 +30,7 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.stopsTableView.dataSource = self
         configureSearchController()
         initializeStyles()
+        initializeRefreshController()
         
         if self.showIndicatorByDefault {
             self.loadingIndicator.startAnimating()
@@ -37,6 +40,12 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     /// helper function that initializes any styless
     private func initializeStyles() {
         self.stopsTableView.separatorColor = UIColor.clear
+    }
+    
+    private func initializeRefreshController() {
+        self.refreshController = UIRefreshControl()
+        self.refreshController?.addTarget("refresh", action: #selector(refreshData), for: UIControlEvents.valueChanged)
+        self.stopsTableView.addSubview(self.refreshController!)
     }
     
     /// setup the search controller
@@ -155,6 +164,13 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     public func refreshTableView() {
         if self.stopsTableView != nil {
             self.stopsTableView.reloadData()
+            self.refreshController?.endRefreshing()
+        }
+    }
+    
+    @objc private func refreshData() {
+        if reloadStops != nil {
+            self.reloadStops!()
         }
     }
 }
