@@ -18,6 +18,7 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var showIndicatorByDefault: Bool = false
     var refreshController: UIRefreshControl = UIRefreshControl()
     var reloadStops: (() -> ())? = nil
+    var emptyStateMessage: String = ""
     
     @IBOutlet weak var stopsTableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -65,14 +66,19 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     ///
     /// - Parameter searchText: the keyword user typed in to perform the search
     func filterContentForSearchText(searchText: String) -> Void {
-        if self.stops.isEmpty {
+        if searchText == "" {
             return
         }
         self.loadingIndicator.startAnimating()
         Api.getStops(searchTerm: searchText, completionHandler: { (response) in
-            self.stopsSearchResult = Parser.parseStops(data: response)
-            self.stopsTableView.reloadData()
+            if response == nil {
+                self.updateEmptyStateMessage(message: "Network error")
+            } else {
+                self.stopsSearchResult = Parser.parseStops(data: response!)
+                self.updateEmptyStateMessage(message: "No search results.", basedOn: self.stopsSearchResult.count)
+            }
             self.loadingIndicator.stopAnimating()
+            self.stopsTableView.reloadData()
         })
     }
     
@@ -85,15 +91,9 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        filterContentForSearchText(searchText: searchBar.text!)
-    }
-    
-    /// delegate method being called when user start typing
-    ///
-    /// - Parameter searchBar: the bar user types into
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         shouldShowSearchResult = true
-        self.stopsTableView.reloadData()
+        self.updateEmptyStateMessage(message: "")
+        filterContentForSearchText(searchText: searchBar.text!)
     }
     
     /// delegate method being called when user hit cancel button
@@ -101,7 +101,9 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     /// - Parameter searchBar: the bar whose cancel button is clicked by user
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         shouldShowSearchResult = false
+        self.stopsSearchResult = []
         self.stopsTableView.reloadData()
+        self.loadingIndicator.stopAnimating()
     }
 
     /// The content of every cell
@@ -126,10 +128,14 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     ///   - section: the section
     /// - Returns: the number of rows
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if shouldShowSearchResult {
-            return self.stopsSearchResult.count
+        let currentStopList = shouldShowSearchResult ? self.stopsSearchResult : self.stops
+        if currentStopList.count > 0 {
+            self.stopsTableView.backgroundView = nil
+            emptyStateMessage = ""
+        } else {
+            self.stopsTableView.backgroundView = EmptyState.getEmptyStateView(reason: emptyStateMessage)
         }
-        return self.stops.count
+        return currentStopList.count
     }
     
     /// When a segue transition will occur
@@ -153,7 +159,6 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let currentStopsList = self.shouldShowSearchResult ? self.stopsSearchResult : self.stops
         performSegue(withIdentifier: "showRoutesFromStops", sender: currentStopsList[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
-
         searchBarCancelButtonClicked(searchController.searchBar)
     }
     
@@ -166,6 +171,7 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if self.stopsTableView != nil {
             self.stopsTableView.reloadData()
             self.refreshController.endRefreshing()
+            self.loadingIndicator.stopAnimating()
         }
     }
     
@@ -174,6 +180,15 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if reloadStops != nil {
             self.reloadStops!()
         }
+    }
+    
+    public func updateEmptyStateMessage(message: String, basedOn count: Int = 0) {
+        if count > 0 {
+            self.emptyStateMessage = ""
+        } else {
+            self.emptyStateMessage = message
+        }
+        refreshTableView()
     }
 }
 

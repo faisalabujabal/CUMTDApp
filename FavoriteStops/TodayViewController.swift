@@ -93,8 +93,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDeleg
             let stop = self.stops[stopIndex]
             if stop != nil {
                 Api.getRoutes(stopId: (stop?.id)!, completionHandler: { (response) in
-                    self.stopRoutes[stopIndex] = Parser.parseRoutes(data: response)
-                    self.homeStopTableView.reloadData()
+                    if response != nil {
+                        self.stopRoutes[stopIndex] = Parser.parseRoutes(data: response!)
+                        self.homeStopTableView.reloadData()
+                    }
                 })
             }
         }

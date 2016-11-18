@@ -20,6 +20,9 @@ class WidgetStopCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDeleg
         loadWidgetStops()
         if self.favoriteStops.count == 0 {
             self.selectedStop.text = "Add favorite stops"
+            if self.widgetStopType != nil {
+                LocalData.removeWidgetStop(for: self.widgetStopType!)
+            }
         } else {
             self.selectedStop.text = getSelectedStop()
             self.selectedStop.inputView = initializePicker()
