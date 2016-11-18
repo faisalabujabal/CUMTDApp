@@ -72,6 +72,7 @@ class WidgetStopCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDeleg
         if widgetStopType != nil {
             let currentFavoriteStop = LocalData.getWidgetStop(for: self.widgetStopType!)
             if currentFavoriteStop == nil {
+                LocalData.updateWidgetStop(for: self.widgetStopType!, stop: self.favoriteStops[0])
                 return favoriteStops[0].name
             }
             return currentFavoriteStop!.name

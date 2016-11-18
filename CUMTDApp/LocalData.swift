@@ -15,7 +15,7 @@ class LocalData {
         WidgetStopType.homeStop: "homeStop",
         WidgetStopType.universityStop: "universityStop"
     ]
-    static let userDefaults = UserDefaults.standard
+    static let userDefaults = UserDefaults(suiteName: "group.cumtdapp")
     
     /// Adds a new favorite stop
     ///
@@ -50,7 +50,7 @@ class LocalData {
     ///
     /// - Returns: Mutable dictionary with the favorite stops
     static func getFavoriteStops() -> NSMutableDictionary {
-        let favorites = self.userDefaults.object(forKey: self.favoriteStopKey) as? NSMutableDictionary
+        let favorites = self.userDefaults?.object(forKey: self.favoriteStopKey) as? NSMutableDictionary
         if favorites == nil {
             return [:]
         }
@@ -61,16 +61,16 @@ class LocalData {
     ///
     /// - Parameter favoriteStops: the new object to be saved
     static private func saveFavoriteStops(favoriteStops: NSMutableDictionary) {
-        self.userDefaults.set(favoriteStops, forKey: self.favoriteStopKey)
-        self.userDefaults.synchronize()
+        self.userDefaults?.set(favoriteStops, forKey: self.favoriteStopKey)
+        self.userDefaults?.synchronize()
     }
     
     static public func updateWidgetStop(for widgetStopType: WidgetStopType, stop: Stop) {
-        self.userDefaults.set(["stop_name": stop.name, "stop_id": stop.id], forKey: self.widgetStopKeys[widgetStopType]!)
+        self.userDefaults?.set(["stop_name": stop.name, "stop_id": stop.id], forKey: self.widgetStopKeys[widgetStopType]!)
     }
     
     static public func getWidgetStop(for widgetStopType: WidgetStopType) -> Stop? {
-        let data = self.userDefaults.value(forKey: self.widgetStopKeys[widgetStopType]!)
+        let data = self.userDefaults?.value(forKey: self.widgetStopKeys[widgetStopType]!)
         if data == nil {
             return nil
         }
