@@ -11,18 +11,18 @@ import UIKit
 /// This class deals with the local data
 class LocalData {
     static let favoriteStopKey: String = "favoriteStops"
+    static let widgetStopKeys: [WidgetStopType: String] = [
+        WidgetStopType.homeStop: "homeStop",
+        WidgetStopType.universityStop: "universityStop"
+    ]
     static let userDefaults = UserDefaults.standard
     
     /// Adds a new favorite stop
     ///
     /// - Parameter stop: the stop object
     static func addFavoriteStop(stop: Stop) {
-        var favoriteStops = getFavoriteStops()
-        if favoriteStops == nil {
-            favoriteStops = [stop.id: stop.name]
-        } else {
-            favoriteStops?.setValue(stop.name, forKey: stop.id)
-        }
+        let favoriteStops = getFavoriteStops()
+        favoriteStops.setValue(stop.name, forKey: stop.id)
         saveFavoriteStops(favoriteStops: favoriteStops)
     }
     
@@ -31,8 +31,8 @@ class LocalData {
     /// - Parameter stopId: the stop id to remove
     static func removeFavoriteStop(stopId: String) {
         let favoriteStops = getFavoriteStops()
-        if favoriteStops != nil {
-            favoriteStops?.removeObject(forKey: stopId)
+        if isFavoriteStop(stopId: stopId) {
+            favoriteStops.removeObject(forKey: stopId)
             saveFavoriteStops(favoriteStops: favoriteStops)
         }
     }
@@ -43,29 +43,38 @@ class LocalData {
     /// - Returns: True if the stop is marked as favorite, false otherwise
     static func isFavoriteStop(stopId: String) -> Bool {
         let favoriteStops = getFavoriteStops()
-        if favoriteStops != nil {
-            return favoriteStops![stopId] != nil
-        } else {
-            return false
-        }
+        return favoriteStops.value(forKey: stopId) != nil
     }
     
     /// Gets a list of all the favorite stops
     ///
     /// - Returns: Mutable dictionary with the favorite stops
-    static func getFavoriteStops() -> NSMutableDictionary? {
+    static func getFavoriteStops() -> NSMutableDictionary {
         let favorites = self.userDefaults.object(forKey: self.favoriteStopKey) as? NSMutableDictionary
         if favorites == nil {
-            return nil
+            return [:]
         }
-        return favorites?.mutableCopy() as! NSMutableDictionary?
+        return favorites?.mutableCopy() as! NSMutableDictionary
     }
     
     /// helper function that saves the changes to the local data
     ///
     /// - Parameter favoriteStops: the new object to be saved
-    static private func saveFavoriteStops(favoriteStops: NSMutableDictionary?) {
+    static private func saveFavoriteStops(favoriteStops: NSMutableDictionary) {
         self.userDefaults.set(favoriteStops, forKey: self.favoriteStopKey)
         self.userDefaults.synchronize()
     }
+    
+    static public func updateWidgetStop(for widgetStopType: WidgetStopType, stop: Stop) {
+        self.userDefaults.set(["stop_name": stop.name, "stop_id": stop.id], forKey: self.widgetStopKeys[widgetStopType]!)
+    }
+    
+    static public func getWidgetStop(for widgetStopType: WidgetStopType) -> Stop? {
+        let data = self.userDefaults.value(forKey: self.widgetStopKeys[widgetStopType]!)
+        if data == nil {
+            return nil
+        }
+        return Stop(data: data as! NSDictionary)
+    }
+
 }

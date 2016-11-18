@@ -9,7 +9,7 @@
 import UIKit
 
 /// Class representation of a Stop
-class Stop {
+class Stop: NSObject, NSCoding {
     var id: String
     var name: String
     var isFavorite: Bool
@@ -22,4 +22,17 @@ class Stop {
         self.name = (data["stop_name"] as? String)!
         self.isFavorite = LocalData.isFavoriteStop(stopId: self.id)
     }
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.name, forKey: "name")
+        aCoder.encode(self.id, forKey: "id")
+        aCoder.encode(self.isFavorite, forKey: "isFavorite")
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        self.name = aDecoder.decodeObject(forKey: "name") as! String
+        self.id = aDecoder.decodeObject(forKey: "id") as! String
+        self.isFavorite = aDecoder.decodeObject(forKey: "isFavorite") as! Bool
+    }
+    
 }

@@ -22,6 +22,13 @@
 		3A3ED5AF1DD5364A007D0D54 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5AE1DD5364A007D0D54 /* Route.swift */; };
 		3A3ED5B11DD54F0C007D0D54 /* RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5B01DD54F0C007D0D54 /* RGBA.swift */; };
 		3A50E2611DD5A1A800909D23 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A50E2601DD5A1A800909D23 /* TabBarController.swift */; };
+		3ABAA3E91DDE6157003535A2 /* WidgetStopType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABAA3E81DDE6156003535A2 /* WidgetStopType.swift */; };
+		3ADFC7701DDD9828000081E8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADFC76F1DDD9828000081E8 /* NotificationCenter.framework */; };
+		3ADFC7731DDD9828000081E8 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADFC7721DDD9828000081E8 /* TodayViewController.swift */; };
+		3ADFC7761DDD9829000081E8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ADFC7741DDD9829000081E8 /* MainInterface.storyboard */; };
+		3ADFC77A1DDD9829000081E8 /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3ADFC76D1DDD9828000081E8 /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3ADFC7861DDDA0F1000081E8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADFC7851DDDA0F1000081E8 /* SettingsViewController.swift */; };
+		3ADFC78A1DDDA906000081E8 /* WidgetStopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADFC7891DDDA906000081E8 /* WidgetStopCell.swift */; };
 		3AF8DD1E1DD57715007AD2EA /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DD1D1DD57715007AD2EA /* LocalData.swift */; };
 		3AF8DD201DD58A69007AD2EA /* FavoriteStopsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DD1F1DD58A69007AD2EA /* FavoriteStopsNavigationController.swift */; };
 		3AF8DD221DD58B45007AD2EA /* NearbyStopsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DD211DD58B45007AD2EA /* NearbyStopsNavigationController.swift */; };
@@ -35,7 +42,28 @@
 			remoteGlobalIDString = 3A077E591DD4404300BDF81C;
 			remoteInfo = CUMTDApp;
 		};
+		3ADFC7781DDD9829000081E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A077E521DD4404300BDF81C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3ADFC76C1DDD9828000081E8;
+			remoteInfo = Widget;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3ADFC77E1DDD9829000081E8 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3ADFC77A1DDD9829000081E8 /* Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3A077E5A1DD4404300BDF81C /* CUMTDApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CUMTDApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +85,14 @@
 		3A3ED5AE1DD5364A007D0D54 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		3A3ED5B01DD54F0C007D0D54 /* RGBA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBA.swift; sourceTree = "<group>"; };
 		3A50E2601DD5A1A800909D23 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		3ABAA3E81DDE6156003535A2 /* WidgetStopType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetStopType.swift; sourceTree = "<group>"; };
+		3ADFC76D1DDD9828000081E8 /* Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ADFC76F1DDD9828000081E8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		3ADFC7721DDD9828000081E8 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		3ADFC7751DDD9829000081E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		3ADFC7771DDD9829000081E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3ADFC7851DDDA0F1000081E8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3ADFC7891DDDA906000081E8 /* WidgetStopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetStopCell.swift; sourceTree = "<group>"; };
 		3AF8DD1D1DD57715007AD2EA /* LocalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
 		3AF8DD1F1DD58A69007AD2EA /* FavoriteStopsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStopsNavigationController.swift; sourceTree = "<group>"; };
 		3AF8DD211DD58B45007AD2EA /* NearbyStopsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyStopsNavigationController.swift; sourceTree = "<group>"; };
@@ -77,6 +113,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3ADFC76A1DDD9828000081E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ADFC7701DDD9828000081E8 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -85,6 +129,8 @@
 			children = (
 				3A077E5C1DD4404300BDF81C /* CUMTDApp */,
 				3A077E711DD4404300BDF81C /* CUMTDAppTests */,
+				3ADFC7711DDD9828000081E8 /* Widget */,
+				3ADFC76E1DDD9828000081E8 /* Frameworks */,
 				3A077E5B1DD4404300BDF81C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,6 +140,7 @@
 			children = (
 				3A077E5A1DD4404300BDF81C /* CUMTDApp.app */,
 				3A077E6E1DD4404300BDF81C /* CUMTDAppTests.xctest */,
+				3ADFC76D1DDD9828000081E8 /* Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,6 +177,7 @@
 				3AF8DD1F1DD58A69007AD2EA /* FavoriteStopsNavigationController.swift */,
 				3AF8DD211DD58B45007AD2EA /* NearbyStopsNavigationController.swift */,
 				3A50E2601DD5A1A800909D23 /* TabBarController.swift */,
+				3ADFC7851DDDA0F1000081E8 /* SettingsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -139,6 +187,7 @@
 			children = (
 				3A0B7BAF1DD4584500FB1841 /* StopCell.swift */,
 				3A3ED5A81DD518A9007D0D54 /* RouteCell.swift */,
+				3ADFC7891DDDA906000081E8 /* WidgetStopCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -152,8 +201,27 @@
 				3A3ED5AE1DD5364A007D0D54 /* Route.swift */,
 				3A3ED5B01DD54F0C007D0D54 /* RGBA.swift */,
 				3AF8DD1D1DD57715007AD2EA /* LocalData.swift */,
+				3ABAA3E81DDE6156003535A2 /* WidgetStopType.swift */,
 			);
 			name = Internals;
+			sourceTree = "<group>";
+		};
+		3ADFC76E1DDD9828000081E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3ADFC76F1DDD9828000081E8 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3ADFC7711DDD9828000081E8 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				3ADFC7721DDD9828000081E8 /* TodayViewController.swift */,
+				3ADFC7741DDD9829000081E8 /* MainInterface.storyboard */,
+				3ADFC7771DDD9829000081E8 /* Info.plist */,
+			);
+			path = Widget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,10 +234,12 @@
 				3A077E561DD4404300BDF81C /* Sources */,
 				3A077E571DD4404300BDF81C /* Frameworks */,
 				3A077E581DD4404300BDF81C /* Resources */,
+				3ADFC77E1DDD9829000081E8 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3ADFC7791DDD9829000081E8 /* PBXTargetDependency */,
 			);
 			name = CUMTDApp;
 			productName = CUMTDApp;
@@ -194,6 +264,23 @@
 			productReference = 3A077E6E1DD4404300BDF81C /* CUMTDAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		3ADFC76C1DDD9828000081E8 /* Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3ADFC77D1DDD9829000081E8 /* Build configuration list for PBXNativeTarget "Widget" */;
+			buildPhases = (
+				3ADFC7691DDD9828000081E8 /* Sources */,
+				3ADFC76A1DDD9828000081E8 /* Frameworks */,
+				3ADFC76B1DDD9828000081E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Widget;
+			productName = Widget;
+			productReference = 3ADFC76D1DDD9828000081E8 /* Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -215,6 +302,11 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 3A077E591DD4404300BDF81C;
 					};
+					3ADFC76C1DDD9828000081E8 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 3PHNE428JG;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 3A077E551DD4404300BDF81C /* Build configuration list for PBXProject "CUMTDApp" */;
@@ -232,6 +324,7 @@
 			targets = (
 				3A077E591DD4404300BDF81C /* CUMTDApp */,
 				3A077E6D1DD4404300BDF81C /* CUMTDAppTests */,
+				3ADFC76C1DDD9828000081E8 /* Widget */,
 			);
 		};
 /* End PBXProject section */
@@ -254,6 +347,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3ADFC76B1DDD9828000081E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ADFC7761DDD9829000081E8 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -270,8 +371,11 @@
 				3A3ED5AD1DD534E6007D0D54 /* Parser.swift in Sources */,
 				3A0B7BB01DD4584500FB1841 /* StopCell.swift in Sources */,
 				3AF8DD201DD58A69007AD2EA /* FavoriteStopsNavigationController.swift in Sources */,
+				3ADFC78A1DDDA906000081E8 /* WidgetStopCell.swift in Sources */,
 				3A077E831DD4428500BDF81C /* Api.swift in Sources */,
 				3AF8DD1E1DD57715007AD2EA /* LocalData.swift in Sources */,
+				3ABAA3E91DDE6157003535A2 /* WidgetStopType.swift in Sources */,
+				3ADFC7861DDDA0F1000081E8 /* SettingsViewController.swift in Sources */,
 				3A50E2611DD5A1A800909D23 /* TabBarController.swift in Sources */,
 				3AF8DD221DD58B45007AD2EA /* NearbyStopsNavigationController.swift in Sources */,
 				3A077E5E1DD4404300BDF81C /* AppDelegate.swift in Sources */,
@@ -286,6 +390,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3ADFC7691DDD9828000081E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ADFC7731DDD9828000081E8 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -293,6 +405,11 @@
 			isa = PBXTargetDependency;
 			target = 3A077E591DD4404300BDF81C /* CUMTDApp */;
 			targetProxy = 3A077E6F1DD4404300BDF81C /* PBXContainerItemProxy */;
+		};
+		3ADFC7791DDD9829000081E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3ADFC76C1DDD9828000081E8 /* Widget */;
+			targetProxy = 3ADFC7781DDD9829000081E8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -311,6 +428,14 @@
 				3A077E671DD4404300BDF81C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3ADFC7741DDD9829000081E8 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3ADFC7751DDD9829000081E8 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -410,6 +535,7 @@
 		3A077E781DD4404300BDF81C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3PHNE428JG;
 				INFOPLIST_FILE = CUMTDApp/Info.plist;
@@ -423,6 +549,7 @@
 		3A077E791DD4404300BDF81C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3PHNE428JG;
 				INFOPLIST_FILE = CUMTDApp/Info.plist;
@@ -463,6 +590,32 @@
 			};
 			name = Release;
 		};
+		3ADFC77B1DDD9829000081E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3PHNE428JG;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "faisal-oscar.CUMTDApp.Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		3ADFC77C1DDD9829000081E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 3PHNE428JG;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "faisal-oscar.CUMTDApp.Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -489,6 +642,15 @@
 			buildConfigurations = (
 				3A077E7B1DD4404300BDF81C /* Debug */,
 				3A077E7C1DD4404300BDF81C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3ADFC77D1DDD9829000081E8 /* Build configuration list for PBXNativeTarget "Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ADFC77B1DDD9829000081E8 /* Debug */,
+				3ADFC77C1DDD9829000081E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
