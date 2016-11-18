@@ -41,6 +41,9 @@
 		3AF8DD1E1DD57715007AD2EA /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DD1D1DD57715007AD2EA /* LocalData.swift */; };
 		3AF8DD201DD58A69007AD2EA /* FavoriteStopsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DD1F1DD58A69007AD2EA /* FavoriteStopsNavigationController.swift */; };
 		3AF8DD221DD58B45007AD2EA /* NearbyStopsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DD211DD58B45007AD2EA /* NearbyStopsNavigationController.swift */; };
+		55B4F4101DD6711A001AAD07 /* StopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B4F40F1DD6711A001AAD07 /* StopDetailViewController.swift */; };
+		55B4F4131DD673B7001AAD07 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B4F4121DD673B7001AAD07 /* MapKit.framework */; };
+		55B4F4151DD6759A001AAD07 /* StopMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B4F4141DD6759A001AAD07 /* StopMap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +110,9 @@
 		3AF8DD1D1DD57715007AD2EA /* LocalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
 		3AF8DD1F1DD58A69007AD2EA /* FavoriteStopsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStopsNavigationController.swift; sourceTree = "<group>"; };
 		3AF8DD211DD58B45007AD2EA /* NearbyStopsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyStopsNavigationController.swift; sourceTree = "<group>"; };
+		55B4F40F1DD6711A001AAD07 /* StopDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopDetailViewController.swift; sourceTree = "<group>"; };
+		55B4F4121DD673B7001AAD07 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		55B4F4141DD6759A001AAD07 /* StopMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55B4F4131DD673B7001AAD07 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +150,7 @@
 				3ABAA3F71DDEADA2003535A2 /* FavoriteStops */,
 				3ADFC76E1DDD9828000081E8 /* Frameworks */,
 				3A077E5B1DD4404300BDF81C /* Products */,
+				55B4F4111DD673B7001AAD07 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,6 +196,7 @@
 				3A0B7BB11DD462D700FB1841 /* RoutesViewController.swift */,
 				3AF8DD1F1DD58A69007AD2EA /* FavoriteStopsNavigationController.swift */,
 				3AF8DD211DD58B45007AD2EA /* NearbyStopsNavigationController.swift */,
+				55B4F40F1DD6711A001AAD07 /* StopDetailViewController.swift */,
 				3A50E2601DD5A1A800909D23 /* TabBarController.swift */,
 				3ADFC7851DDDA0F1000081E8 /* SettingsViewController.swift */,
 			);
@@ -200,6 +209,7 @@
 				3A0B7BAF1DD4584500FB1841 /* StopCell.swift */,
 				3A3ED5A81DD518A9007D0D54 /* RouteCell.swift */,
 				3ADFC7891DDDA906000081E8 /* WidgetStopCell.swift */,
+				55B4F4141DD6759A001AAD07 /* StopMap.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -396,6 +406,7 @@
 				3A0B7BB01DD4584500FB1841 /* StopCell.swift in Sources */,
 				3AF8DD201DD58A69007AD2EA /* FavoriteStopsNavigationController.swift in Sources */,
 				3ADFC78A1DDDA906000081E8 /* WidgetStopCell.swift in Sources */,
+				55B4F4151DD6759A001AAD07 /* StopMap.swift in Sources */,
 				3A077E831DD4428500BDF81C /* Api.swift in Sources */,
 				3AF8DD1E1DD57715007AD2EA /* LocalData.swift in Sources */,
 				3ABAA3E91DDE6157003535A2 /* WidgetStopType.swift in Sources */,
@@ -403,6 +414,7 @@
 				3A50E2611DD5A1A800909D23 /* TabBarController.swift in Sources */,
 				3AF8DD221DD58B45007AD2EA /* NearbyStopsNavigationController.swift in Sources */,
 				3A077E5E1DD4404300BDF81C /* AppDelegate.swift in Sources */,
+				55B4F4101DD6711A001AAD07 /* StopDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

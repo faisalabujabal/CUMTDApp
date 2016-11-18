@@ -83,6 +83,15 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return routeCell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextViewController = segue.destination as? StopDetailViewController{
+            nextViewController.stop = self.stop
+            nextViewController.title = self.stop?.name
+            
+        }
+    }
+
+    
     /// When a row gets clicked
     ///
     /// - Parameters:
@@ -99,5 +108,7 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.favoriteBtn.setBackgroundImage(UIImage(named: "starIcon"), for: UIControlState.normal)
         }
     }
+    
+
     
 }

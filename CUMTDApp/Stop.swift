@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import MapKit
+
 
 /// Class representation of a Stop
-class Stop: NSObject, NSCoding {
+class Stop {
     var id: String
     var name: String
+    var location : CLLocationCoordinate2D
     var isFavorite: Bool
     
     /// Initializes a Stop
@@ -27,18 +30,11 @@ class Stop: NSObject, NSCoding {
             self.name = ""
         }
         self.isFavorite = LocalData.isFavoriteStop(stopId: self.id)
-    }
-    
-    public func encode(with aCoder: NSCoder) {
-        aCoder.encode(self.name, forKey: "name")
-        aCoder.encode(self.id, forKey: "id")
-        aCoder.encode(self.isFavorite, forKey: "isFavorite")
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        self.name = aDecoder.decodeObject(forKey: "name") as! String
-        self.id = aDecoder.decodeObject(forKey: "id") as! String
-        self.isFavorite = aDecoder.decodeObject(forKey: "isFavorite") as! Bool
+
+        let stop_points = data["stop_points"] as? [NSDictionary]
+        let lon = stop_points?[0]["stop_lon"] as? Double
+        let lat = stop_points?[0]["stop_lat"] as? Double
+        self.location = CLLocationCoordinate2D(latitude: CLLocationDegrees(lat ?? 0), longitude: CLLocationDegrees(lon ?? 0))
     }
     
 }
