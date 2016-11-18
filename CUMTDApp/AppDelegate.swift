@@ -40,7 +40,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    
+    /// Gets called when the app is opened through a shortcut
+    ///
+    /// - Parameters:
+    ///   - application: the application
+    ///   - shortcutItem: the shortcut used to open the app
+    ///   - completionHandler: the completion status
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(handleShortcut(shortcutItem: shortcutItem))
+    }
 
+    /// Handles the case if the app is opened from a shortcut
+    ///
+    /// - Parameter shortcutItem: the shortcut that opened the app
+    /// - Returns: whether the app loaded successfully
+    private func handleShortcut(shortcutItem: UIApplicationShortcutItem) -> Bool {
+        let type = shortcutItem.type
+        guard let shortcutIdentifier = ShortcutIdentifier(rawValue: type) else {
+            return false
+        }
+        
+        if let tabBarViewController = self.window?.rootViewController as? UITabBarController {
+            tabBarViewController.selectedIndex = shortcutIdentifier.getTabBarIndex()
+        } else {
+            return false
+        }
+        return true
+    }
 
 }
 

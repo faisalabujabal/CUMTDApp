@@ -31,6 +31,7 @@
 		3A9142591DDEB66000BE7991 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A077E821DD4428500BDF81C /* Api.swift */; };
 		3A91425A1DDEB6BA00BE7991 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5AC1DD534E6007D0D54 /* Parser.swift */; };
 		3A91425B1DDEB72000BE7991 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3ED5A81DD518A9007D0D54 /* RouteCell.swift */; };
+		3A9A50B81DDEFF1F0031F118 /* ShortcutIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A50B71DDEFF1F0031F118 /* ShortcutIdentifier.swift */; };
 		3ABAA3E91DDE6157003535A2 /* WidgetStopType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABAA3E81DDE6156003535A2 /* WidgetStopType.swift */; };
 		3ABAA3F61DDEADA2003535A2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADFC76F1DDD9828000081E8 /* NotificationCenter.framework */; };
 		3ABAA3F91DDEADA2003535A2 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABAA3F81DDEADA2003535A2 /* TodayViewController.swift */; };
@@ -98,6 +99,7 @@
 		3A3ED5B01DD54F0C007D0D54 /* RGBA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBA.swift; sourceTree = "<group>"; };
 		3A50E2601DD5A1A800909D23 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		3A9142521DDEAE7800BE7991 /* FavoriteStops.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FavoriteStops.entitlements; sourceTree = "<group>"; };
+		3A9A50B71DDEFF1F0031F118 /* ShortcutIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutIdentifier.swift; sourceTree = "<group>"; };
 		3ABAA3E81DDE6156003535A2 /* WidgetStopType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetStopType.swift; sourceTree = "<group>"; };
 		3ABAA3EF1DDEAC1F003535A2 /* CUMTDApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CUMTDApp.entitlements; sourceTree = "<group>"; };
 		3ABAA3F51DDEADA2003535A2 /* FavoriteStops.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FavoriteStops.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,7 +152,6 @@
 				3ABAA3F71DDEADA2003535A2 /* FavoriteStops */,
 				3ADFC76E1DDD9828000081E8 /* Frameworks */,
 				3A077E5B1DD4404300BDF81C /* Products */,
-				55B4F4111DD673B7001AAD07 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -224,6 +225,7 @@
 				3A3ED5B01DD54F0C007D0D54 /* RGBA.swift */,
 				3AF8DD1D1DD57715007AD2EA /* LocalData.swift */,
 				3ABAA3E81DDE6156003535A2 /* WidgetStopType.swift */,
+				3A9A50B71DDEFF1F0031F118 /* ShortcutIdentifier.swift */,
 			);
 			name = Internals;
 			sourceTree = "<group>";
@@ -410,6 +412,7 @@
 				3A077E831DD4428500BDF81C /* Api.swift in Sources */,
 				3AF8DD1E1DD57715007AD2EA /* LocalData.swift in Sources */,
 				3ABAA3E91DDE6157003535A2 /* WidgetStopType.swift in Sources */,
+				3A9A50B81DDEFF1F0031F118 /* ShortcutIdentifier.swift in Sources */,
 				3ADFC7861DDDA0F1000081E8 /* SettingsViewController.swift in Sources */,
 				3A50E2611DD5A1A800909D23 /* TabBarController.swift in Sources */,
 				3AF8DD221DD58B45007AD2EA /* NearbyStopsNavigationController.swift in Sources */,
