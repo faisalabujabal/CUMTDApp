@@ -16,7 +16,7 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var shouldShowSearchResult: Bool = false;
     var searchController: UISearchController!
     var showIndicatorByDefault: Bool = false
-    var refreshController: UIRefreshControl? = nil
+    var refreshController: UIRefreshControl = UIRefreshControl()
     var reloadStops: (() -> ())? = nil
     
     @IBOutlet weak var stopsTableView: UITableView!
@@ -42,10 +42,11 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.stopsTableView.separatorColor = UIColor.clear
     }
     
+    /// initializes UIRefreshControl and adds it to the view
     private func initializeRefreshController() {
         self.refreshController = UIRefreshControl()
-        self.refreshController?.addTarget("refresh", action: #selector(refreshData), for: UIControlEvents.valueChanged)
-        self.stopsTableView.addSubview(self.refreshController!)
+        self.refreshController.addTarget("refresh", action: #selector(refreshData), for: UIControlEvents.valueChanged)
+        self.stopsTableView.addSubview(self.refreshController)
     }
     
     /// setup the search controller
@@ -164,10 +165,11 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     public func refreshTableView() {
         if self.stopsTableView != nil {
             self.stopsTableView.reloadData()
-            self.refreshController?.endRefreshing()
+            self.refreshController.endRefreshing()
         }
     }
     
+    /// Gets called when the user pulls to refresh
     @objc private func refreshData() {
         if reloadStops != nil {
             self.reloadStops!()
