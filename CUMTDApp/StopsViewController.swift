@@ -29,6 +29,8 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.stopsTableView.delegate = self
         self.stopsTableView.dataSource = self
+        self.definesPresentationContext = true
+        
         configureSearchController()
         initializeStyles()
         initializeRefreshController()
@@ -72,10 +74,10 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.loadingIndicator.startAnimating()
         Api.getStops(searchTerm: searchText, completionHandler: { (response) in
             if response == nil {
-                self.updateEmptyStateMessage(message: "Network error")
+                self.updateEmptyStateMessage(message: "Network error 😣")
             } else {
                 self.stopsSearchResult = Parser.parseStops(data: response!)
-                self.updateEmptyStateMessage(message: "No search results.", basedOn: self.stopsSearchResult.count)
+                self.updateEmptyStateMessage(message: "No search results ☹️", basedOn: self.stopsSearchResult.count)
             }
             self.loadingIndicator.stopAnimating()
             self.stopsTableView.reloadData()
@@ -155,7 +157,7 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     ///   - tableView: the table view
     ///   - indexPath: the index path
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        searchController.isActive = false
+        self.searchController.isActive = false
         let currentStopsList = self.shouldShowSearchResult ? self.stopsSearchResult : self.stops
         performSegue(withIdentifier: "showRoutesFromStops", sender: currentStopsList[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
