@@ -56,11 +56,11 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         Api.getRoutes(stopId: (self.stop?.id)!) { (response) -> () in
             DispatchQueue.main.async {
                 if response == nil {
-                    self.emptyStateMessage = "Network Error"
+                    self.emptyStateMessage = "Network Error 😣"
                 } else {
                     self.routes = Parser.parseRoutes(data: response!)
                     if self.routes.count == 0 {
-                        self.emptyStateMessage = "No routes at the moment."
+                        self.emptyStateMessage = "No bus routes at the moment 😱"
                     }
                 }
                 self.routesTableView.reloadData()
