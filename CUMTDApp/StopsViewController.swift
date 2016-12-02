@@ -72,10 +72,10 @@ class StopsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.loadingIndicator.startAnimating()
         Api.getStops(searchTerm: searchText, completionHandler: { (response) in
             if response == nil {
-                self.updateEmptyStateMessage(message: "Network error")
+                self.updateEmptyStateMessage(message: "Network error 😣")
             } else {
                 self.stopsSearchResult = Parser.parseStops(data: response!)
-                self.updateEmptyStateMessage(message: "No search results.", basedOn: self.stopsSearchResult.count)
+                self.updateEmptyStateMessage(message: "No search results 😮", basedOn: self.stopsSearchResult.count)
             }
             self.loadingIndicator.stopAnimating()
             self.stopsTableView.reloadData()

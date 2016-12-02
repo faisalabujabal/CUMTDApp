@@ -14,6 +14,16 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>WatchApp (Notification).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>WatchApp.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>Widget.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -28,6 +38,11 @@
 			<true/>
 		</dict>
 		<key>3A077E6D1DD4404300BDF81C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3A29420C1DF148AC005818FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -24,6 +24,13 @@ class LocalData {
         let favoriteStops = getFavoriteStops()
         favoriteStops.setValue(stop.name, forKey: stop.id)
         saveFavoriteStops(favoriteStops: favoriteStops)
+        updateFavoritesOnWatch()
+        SpotlightSearch.addFavoriteStop(stop: stop)
+    }
+    
+    static private func updateFavoritesOnWatch() {
+        let watchCommunication = WatchCommunication()
+        watchCommunication.sendMessageToWatch(favoriteStops: (getFavoriteStops() as NSDictionary) as! [String:Any])
     }
     
     /// Removes a stop from the favorite stops list
@@ -34,6 +41,8 @@ class LocalData {
         if isFavoriteStop(stopId: stopId) {
             favoriteStops.removeObject(forKey: stopId)
             saveFavoriteStops(favoriteStops: favoriteStops)
+            updateFavoritesOnWatch()
+            SpotlightSearch.removeFavoriteStop(stopId: stopId)
         }
     }
     
@@ -90,6 +99,12 @@ class LocalData {
             return nil
         }
         return Stop(data: data as! NSDictionary)
+    }
+    
+    static public func getFavoriteStop(with stopId: String) -> Stop {
+        let favoriteStops = getFavoriteStops()
+        let stopName = favoriteStops.value(forKey: stopId)
+        return Stop(data: ["stop_id": stopId, "stop_name": stopName!])
     }
 
 }

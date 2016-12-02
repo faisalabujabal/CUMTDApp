@@ -29,8 +29,13 @@ class Stop {
         } else {
             self.name = ""
         }
-        self.isFavorite = LocalData.isFavoriteStop(stopId: self.id)
-
+        
+        #if os(iOS)
+            self.isFavorite = LocalData.isFavoriteStop(stopId: self.id)
+        #else       // we don't care about isFavorite on the watch
+            self.isFavorite = false
+        #endif
+        
         let stop_points = data["stop_points"] as? [NSDictionary]
         let lon = stop_points?[0]["stop_lon"] as? Double
         let lat = stop_points?[0]["stop_lat"] as? Double

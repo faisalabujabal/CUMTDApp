@@ -39,10 +39,27 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.routesTableView.delegate = self
         self.routesTableView.dataSource = self
         
+        // add notification observers
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
         intitializeStyles()
         initializeRefreshController()
         self.loadingIndicator.startAnimating()
         loadData()
+    }
+    
+    func didBecomeActive() {
+        self.routesTableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("dfsdf")
+    }
+    
+    func willEnterForeground() {
+        print("sdfasfadf")
     }
     
     /// Initialzes the UIRefreshControl and adds it to the view
@@ -56,11 +73,11 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         Api.getRoutes(stopId: (self.stop?.id)!) { (response) -> () in
             DispatchQueue.main.async {
                 if response == nil {
-                    self.emptyStateMessage = "Network Error"
+                    self.emptyStateMessage = "Network Error 😣"
                 } else {
                     self.routes = Parser.parseRoutes(data: response!)
                     if self.routes.count == 0 {
-                        self.emptyStateMessage = "No routes at the moment."
+                        self.emptyStateMessage = "No routes at the moment 😱"
                     }
                 }
                 self.routesTableView.reloadData()

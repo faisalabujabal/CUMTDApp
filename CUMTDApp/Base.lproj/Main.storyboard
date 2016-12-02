@@ -24,6 +24,7 @@
                         <segue destination="r6D-s8-k53" kind="relationship" relationship="viewControllers" id="T9h-6S-ZGx"/>
                         <segue destination="h2N-HV-zIq" kind="relationship" relationship="viewControllers" id="n8f-93-kUL"/>
                         <segue destination="9aa-R6-XrX" kind="relationship" relationship="viewControllers" id="Bys-Mj-BuD"/>
+                        <segue destination="8Wn-q3-diG" kind="show" identifier="showRoutesFromStops" id="e3V-yu-Nri"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ARp-H8-XaE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -99,6 +100,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V4a-Ep-2Ah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1542" y="-99"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="o2r-EE-YYO">
+            <objects>
+                <navigationController id="8Wn-q3-diG" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xug-Kg-XUw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Wc9-Yl-XQ4" kind="relationship" relationship="rootViewController" id="5Gg-s5-WYf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KOD-F8-XEo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1284" y="678"/>
         </scene>
         <!--Favorite Stops Navigation Controller-->
         <scene sceneID="0Vu-kg-91U">
@@ -376,5 +393,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="EyX-V2-E4K"/>
+        <segue reference="5Gg-s5-WYf"/>
     </inferredMetricsTieBreakers>
 </document>

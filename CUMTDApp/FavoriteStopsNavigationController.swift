@@ -25,7 +25,7 @@ class FavoriteStopsNavigationController: UINavigationController {
         if self.tableViewController != nil {
             self.favoriteStops = Parser.parseLocalFavoriteStops(data: LocalData.getFavoriteStops())
             self.tableViewController?.stops = self.favoriteStops
-            self.tableViewController?.updateEmptyStateMessage(message: "No favorite stops.", basedOn: self.favoriteStops.count)
+            self.tableViewController?.updateEmptyStateMessage(message: "No favorite stops ☹️", basedOn: self.favoriteStops.count)
         }
     }
     

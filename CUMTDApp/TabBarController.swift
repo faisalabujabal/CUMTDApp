@@ -14,4 +14,18 @@ class TabBarController: UITabBarController {
         self.tabBar.barTintColor = RGBA(hex: "#122847")?.getUIColor()
         self.tabBar.tintColor = RGBA(hex: "#FA6300")?.getUIColor()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextViewController = segue.destination as? UINavigationController {
+            if sender != nil {
+                let routesViewController = nextViewController.topViewController as? RoutesViewController
+                routesViewController?.stop = sender as? Stop
+                routesViewController?.title = (sender as! Stop).name
+                
+                if routesViewController?.routesTableView != nil {
+                    routesViewController?.routesTableView.reloadData()
+                }
+            }
+        }
+    }
 }
