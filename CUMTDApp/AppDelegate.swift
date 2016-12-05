@@ -7,69 +7,18 @@
 //
 
 import UIKit
-import WatchConnectivity
 import CoreSpotlight
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    // var watchCommunication: WatchCommunication? = nil
-    var watchSession: WCSession? = nil
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        // self.watchCommunication = WatchCommunication()
-   /*
-        self.watchSession = WCSession.default()
-        
-        if(WCSession.isSupported()){
-            self.watchSession = WCSession.default()
-            self.watchSession?.delegate = self
-            self.watchSession?.activate()
-        }*/
-        
+
         return true
     }
     
-    public func sessionDidBecomeInactive(_ session: WCSession) {
-        
-    }
-    
-    public func sessionDidDeactivate(_ session: WCSession) {
-        session.activate()
-    }
-    
-    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
-    }
-    
-   /* func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
-        do {
-            print("helllo ")
-            let message = try JSONSerialization.jsonObject(with: messageData, options: []) as? [String: String]
-            if message?["request"] == "favoriteStops" {
-                replyHandler(NSKeyedArchiver.archivedData(withRootObject: LocalData.getFavoriteStops()))
-            }
-        } catch let error as NSError {
-            print("noooo")
-            print(error.description)
-        }
-    }*/
-    /*
-    func session(_ session: WCSession, didReceiveMessageData message: [String:Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        do {
-            // let message = try JSONSerialization.jsonObject(with: message, options: []) as? [String: String]
-            if (message["request"] as! String) == "favoriteStops" {
-                replyHandler((LocalData.getFavoriteStops() as NSDictionary) as! [String:Any]) // NSKeyedArchiver.archivedData(withRootObject: LocalData.getFavoriteStops()))
-            }
-        } catch let error as NSError {
-            print("heeeere")
-            print(error.description)
-        }
-    }*/
-
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

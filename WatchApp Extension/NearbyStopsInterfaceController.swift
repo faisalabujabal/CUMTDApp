@@ -21,13 +21,16 @@ class NearbyStopsInterfaceController: WKInterfaceController, CLLocationManagerDe
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
+        initializeLocationManager()
         reloadTableData()
     }
     
     override func willActivate() {
         super.willActivate()
         
-        initializeLocationManager()
+        self.emptyStateMessage = "Loading..."
+        self.locationManager?.requestLocation()
+        reloadTableData()
     }
     
     /// initializes the location manager
@@ -35,7 +38,6 @@ class NearbyStopsInterfaceController: WKInterfaceController, CLLocationManagerDe
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self
         self.locationManager?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        self.locationManager?.requestLocation()
         self.locationManager?.requestWhenInUseAuthorization()
     }
     
@@ -93,6 +95,8 @@ class NearbyStopsInterfaceController: WKInterfaceController, CLLocationManagerDe
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
         print("error with getting the location")
+        self.emptyStateMessage = "Location error"
+        self.reloadTableData()
     }
     
     /// Performs a segue to the route details

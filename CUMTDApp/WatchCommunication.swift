@@ -55,40 +55,7 @@ class WatchCommunication: NSObject, WCSessionDelegate {
             }
         }
     }
-    
-    /*
-    func session(_ session: WCSession, didReceiveMessageData message: [String:Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        do {
-            // let message = try JSONSerialization.jsonObject(with: message, options: []) as? [String: String]
-            if (message["request"] as! String) == "favoriteStops" {
-                replyHandler((LocalData.getFavoriteStops() as NSDictionary) as! [String:Any]) // NSKeyedArchiver.archivedData(withRootObject: LocalData.getFavoriteStops()))
-            }
-        } catch let error as NSError {
-            print("heeeere")
-            print(error.description)
-        }
-    }*/
-    func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
-        sendMessageToWatch(favoriteStops: (LocalData.getFavoriteStops() as NSDictionary) as! [String:Any])
-    }
     #endif
-
-    public func requestFavoritesFromPhone(completionHandler: @escaping ([Stop]) -> ()) {
-        if self.watchSession != nil {
-            /* watchSession?.sendMessage(["request": "favoriteStops"], replyHandler: { (response) in
-                let favoriteStops = Parser.parseLocalFavoriteStops(data: response as NSDictionary)
-                completionHandler(favoriteStops)
-             }, errorHandler: { (error) in
-                print(error)
-                completionHandler([])
-             })*/
-            watchSession?.sendMessage(["request": "favoriteStops"], replyHandler: { (Data) in
-                print(Data)
-            }, errorHandler: { (error) in
-                print(error)
-            })
-        }
-    }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
         let favoriteStops = Parser.parseLocalFavoriteStops(data: applicationContext as NSDictionary)

@@ -22,12 +22,6 @@ class FavoriteStopsInterfaceController: WKInterfaceController {
         initializeFavoriteStopsTable()
     }
     
-    override func willActivate() {
-        super.willActivate()
-        
-        requestFavoritesFromPhone()
-    }
-    
     /// Initializes the favorites table with the count and data
     private func initializeFavoriteStopsTable() {
         let favoritesTableCount = max(self.favoriteStops.count, 1)
@@ -49,18 +43,9 @@ class FavoriteStopsInterfaceController: WKInterfaceController {
         }
     }
     
-    /// Sends a message to the phone to update the context
-    private func requestFavoritesFromPhone() {
-        self.watchCommunication?.requestFavoritesFromPhone(completionHandler: { (favoriteStops) in
-            self.favoriteStops = favoriteStops
-            self.initializeFavoriteStopsTable()
-        })
-    }
-    
     /// Initializes the watch communication function to start sending and receiving
     private func initializeWatchCommunication() {
         self.watchCommunication = WatchCommunication()
-        requestFavoritesFromPhone()
         
         self.watchCommunication!.addReceiveMessageObserver { (favoriteStops) in
             self.favoriteStops = favoriteStops
