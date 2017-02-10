@@ -39,10 +39,27 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.routesTableView.delegate = self
         self.routesTableView.dataSource = self
         
+        // add notification observers
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
         intitializeStyles()
         initializeRefreshController()
         self.loadingIndicator.startAnimating()
         loadData()
+    }
+    
+    func didBecomeActive() {
+        self.routesTableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("dfsdf")
+    }
+    
+    func willEnterForeground() {
+        print("sdfasfadf")
     }
     
     /// Initialzes the UIRefreshControl and adds it to the view

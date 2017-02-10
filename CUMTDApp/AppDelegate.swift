@@ -7,18 +7,18 @@
 //
 
 import UIKit
+import CoreSpotlight
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
         return true
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -68,6 +68,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
         return true
+    }
+    
+    /// Gets called when the user clicks a link from spotlight search
+    ///
+    /// - Parameters:
+    ///   - application: the application
+    ///   - userActivity: the user activity
+    ///   - restorationHandler: the restoration handler
+    /// - Returns: if it was successful
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        if userActivity.activityType == CSSearchableItemActionType {
+            if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+                if let tabBarViewController = self.window?.rootViewController as? UITabBarController {
+                    tabBarViewController.selectedIndex = 0
+                    tabBarViewController.performSegue(withIdentifier: "showRoutesFromStops", sender: LocalData.getFavoriteStop(with: uniqueIdentifier))
+                    return true
+                }
+            }
+        }
+        return false
     }
 
 }
