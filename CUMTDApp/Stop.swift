@@ -41,5 +41,4 @@ class Stop {
         let lat = stop_points?[0]["stop_lat"] as? Double
         self.location = CLLocationCoordinate2D(latitude: CLLocationDegrees(lat ?? 0), longitude: CLLocationDegrees(lon ?? 0))
     }
-    
 }

@@ -16,6 +16,7 @@ class WidgetStopCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDeleg
     @IBOutlet weak var selectedStop: UITextField!
     @IBOutlet weak var stopLabel: UILabel!
 
+    /// This gets called when the cell is loaded
     override func layoutSubviews() {
         loadWidgetStops()
         if self.favoriteStops.count == 0 {
@@ -30,10 +31,12 @@ class WidgetStopCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDeleg
         }
     }
     
+    /// This function loads the favorites stop
     public func loadWidgetStops() {
         self.favoriteStops = Parser.parseLocalFavoriteStops(data: LocalData.getFavoriteStops())
     }
     
+    /// helper function that initializes the picker
     private func initializePicker() -> UIPickerView {
         let stopPicker = UIPickerView()
         stopPicker.dataSource = self
@@ -56,6 +59,7 @@ class WidgetStopCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDeleg
         return 0
     }
     
+    /// helper function that initializes the toolbar view toolbar
     private func initializePickerToolbar() -> UIToolbar {
         let toolbar = UIToolbar()
         toolbar.barStyle = UIBarStyle.default
@@ -67,10 +71,16 @@ class WidgetStopCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDeleg
         return toolbar
     }
     
+    /// Gets called when the 'Done' button is clicked
+    ///
+    /// - Parameter sender: the sender of the request
     func closePicker(sender: UIBarButtonItem) {
         self.selectedStop.resignFirstResponder()
     }
     
+    /// Gets the selected stop from the text field
+    ///
+    /// - Returns: returns the selected stop name
     private func getSelectedStop() -> String {
         if widgetStopType != nil {
             let currentFavoriteStop = LocalData.getWidgetStop(for: self.widgetStopType!)
@@ -83,23 +93,53 @@ class WidgetStopCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDeleg
         return ""
     }
     
+    /// gets called when the picker is loading to return the number of sections
+    ///
+    /// - Parameter pickerView: the picker view
+    /// - Returns: the number of sections
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
+    /// Returns the number of rows in a component
+    ///
+    /// - Parameters:
+    ///   - pickerView: the picker view
+    ///   - component: the component number
+    /// - Returns: number of rows in that component
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return self.favoriteStops.count
     }
     
+    /// Returns the title of the row
+    ///
+    /// - Parameters:
+    ///   - pickerView: the picker view
+    ///   - row: the row number
+    ///   - component: the component number
+    /// - Returns: the title of the row
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return self.favoriteStops[row].name as String?
     }
     
+    /// Gets called when a row is selected
+    ///
+    /// - Parameters:
+    ///   - pickerView: the picker view
+    ///   - row: the row number
+    ///   - component: the component number
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.selectedStop.text = self.favoriteStops[row].name
         LocalData.updateWidgetStop(for: self.widgetStopType!, stop: self.favoriteStops[row])
     }
     
+    /// Disable changing the text field by hand
+    ///
+    /// - Parameters:
+    ///   - textField: the text field
+    ///   - range: the range
+    ///   - string: the string value
+    /// - Returns: whether the characters could change
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return false
     }

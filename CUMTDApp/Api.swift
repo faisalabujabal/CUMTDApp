@@ -46,6 +46,7 @@ class Api {
         requestFromApi(endpoint: "get_departure", params: params, completionHandler: completionHandler)
     }
     
+    
     /// Helper function that executes get requests to the api
     ///
     /// - Parameters:
